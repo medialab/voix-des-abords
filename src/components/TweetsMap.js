@@ -23,7 +23,7 @@ const TweetsMap = ({
     projection.translate([width / 2, height / 2]);
 
     return projection;
-  }, []);
+  }, [width, height]);
 
   const departements = useMemo(() => data && data['departements.geojson'], [data]);
   const stations = useMemo(() => data && data['stations.csv'], [data]);
