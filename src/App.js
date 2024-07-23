@@ -19,7 +19,7 @@ function App() {
       return cur.then((res) => {
         return new Promise((resolve, reject) => {
           console.group('get ' + datasetName);
-          axios.get(`/data/${datasetName}`, {
+          axios.get(`${process.env.PUBLIC_URL}/data/${datasetName}`, {
             // onDownloadProgress: progressEvent => {
             // }
           })
@@ -51,7 +51,7 @@ function App() {
       return cur.then((res) => {
         return new Promise((resolve, reject) => {
           console.group('get ' + textName);
-          axios.get(`/texts/${textName}`, {
+          axios.get(`${process.env.PUBLIC_URL}/texts/${textName}`, {
             // onDownloadProgress: progressEvent => {
             // }
           })
