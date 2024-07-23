@@ -101,6 +101,8 @@ main .section {
     .ui-contents {
       pointer-events: all;
       padding: 1rem;
+      display: flex;
+      flex-flow: row nowrap;
     }
   }
 }
@@ -108,6 +110,21 @@ main .section {
 .ui-group {
   display: flex;
   flex-flow: row nowrap;
+  &:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+
+  .light-btn {
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    font-style: italic;
+    &.is-active {
+      font-weight: 800;
+    }
+  }
 }
 
 .ui-label {
@@ -137,15 +154,15 @@ main .section {
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
-  .responsive-contents {
+  article {
     flex: 1;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     justify-content: stretch;
     .part {
       flex: 1;
-      max-height: $part-height;
-      min-height: $part-height;
+      // max-height: $part-height;
+      // min-height: $part-height;
       .TweetsMap-container,
       .VoyageVideo-container {
       max-height: $part-height;
@@ -163,12 +180,7 @@ main .section {
       // fill: transparent;
     }
   }
-  .lignes {
-    .ligne {
-      stroke: $rerc-color;
-      stroke-width: 4px;
-    }
-  }
+
   .rivieres {
     path {
       stroke: blue;
@@ -176,14 +188,47 @@ main .section {
     }
   }
 
-  .stations {
-    .station {
+  .map-layer {
+    opacity: 1;
+    transition: .5s all ease;
+    &.is-hidden {
+      opacity: 0;
+    }
+  }
+  .edges {
+    .edge {
+      transition: .5s ease all;
+      stroke: grey;
+      stroke-width: 1;
+      stroke-opacity: .5;
+      &.segment {
+        stroke: $rerc-color;
+        stroke-width: 4px;
+      }
+    }
+    
+  }
+  .nodes {
+    .node {
+      transition: .5s ease all;
+      pointer-events: all;
       circle {
         stroke: white;
-        fill: $rerc-color;
         opacity: 1;
+        cursor: pointer;
+      }
+      &.station {
+        circle {
+          fill: $rerc-color;
+        }
+      }
+      &.twitter_user {
+        circle {
+          fill: turquoise;
+        }
       }
       text {
+        pointer-events: none;
         opacity: 0;
         transition: .5s ease all;
       }
@@ -206,6 +251,7 @@ main .section {
   left: 0;
   top: 0;
   pointer-events: none;
+  overflow: hidden;
   .tweet-content {
     padding: .5rem;
     position: absolute;
@@ -213,6 +259,9 @@ main .section {
     overflow: hidden;
     background: black;
     color: white;
+    p {
+      margin: 0;
+    }
   }
 }
 

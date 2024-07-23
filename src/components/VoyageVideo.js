@@ -102,7 +102,7 @@ const VoyageVideo = ({
     const newCurrentSegment = segments.find(s => playedSeconds >= s.fromSeconds && playedSeconds < s.toSeconds);
     if (newCurrentSegment && (currentSegment === undefined || currentSegment.label !== newCurrentSegment.label)) {
       const segmentDuration = newCurrentSegment.toSeconds - newCurrentSegment.fromSeconds;
-      const displayTimePadding = segmentDuration / newCurrentSegment.tweets.length;
+      const displayTimePadding = segmentDuration / (newCurrentSegment.tweets.length + 1);
       const positionnedSegment = {
         ...newCurrentSegment,
         tweets: newCurrentSegment.tweets.map((tweet,index) => {
@@ -179,9 +179,10 @@ const VoyageVideo = ({
                   minWidth: elWidth,
                   // height: elHeight,
                   // maxHeight: elHeight,
-                  fontSize: 7 + (+tweet.retweet_count)
+                  fontSize: 10 + (+tweet.retweet_count)
                 }}
                 className="tweet-content" key={i}>
+                  <p>{tweet.user_screen_name}</p>
                   <p>{new Date(tweet.local_time).toLocaleDateString()} - {new Date(tweet.local_time).toLocaleTimeString()}</p>
                 <p>
                 <TypeAnimation

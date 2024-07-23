@@ -11,7 +11,7 @@ const Voyageurs = ({
   return (
     <section id={id} className="section voyageurs">
       <h2>{title}</h2>
-      <article className="responsive-contents">
+      <article>
         <div className="part">
           <VoyageVideoContainer
             data={data}

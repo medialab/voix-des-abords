@@ -40,8 +40,9 @@ export const datasets = [
   'reseau-hydrographique.geojson',
   'stations.csv',
   'tweets.csv',
-  'trajets-rerc.csv',
-  'timecode-arrets-etampes-bfm.csv'
+  // 'trajets-rerc.csv',
+  'timecode-arrets-etampes-bfm.csv',
+  'twitter_and_stations_network.json'
 ];
 
 export const textsList = [

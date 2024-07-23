@@ -31,18 +31,18 @@ function App() {
                 data = JSON.parse(str);
               }
               console.info('success');
-              console.groupEnd('get ' + datasetName);
               resolve({ ...res, [datasetName]: data });
+              return console.groupEnd('get ' + datasetName);
             })
             .catch(err => {
               console.info('error', err);
-              console.groupEnd('get', datasetName);
-
+              return console.groupEnd('get ' + datasetName);
             })
         })
       })
     }, Promise.resolve({}))
       .then(result => {
+        console.info('all data is retrieved!')
         setData(result);
       })
   }, [])
@@ -56,17 +56,20 @@ function App() {
             // }
           })
             .then(({ data: str }) => {  
+              console.info('success')
+              console.groupEnd('get ' + textName);
               resolve({ ...res, [textName]: str });
             })
             .catch(err => {
               console.info('error', err);
-              console.groupEnd('get', textName);
+              console.groupEnd('get ' + textName);
 
             })
         })
       })
     }, Promise.resolve({}))
       .then(result => {
+        console.info('all texts are retrieved!')
         setTexts(result);
       })
   }, []);
