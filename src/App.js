@@ -13,11 +13,11 @@ const metadata = {
 
 const menuData = [
   {
-    title: 'les voyageurs',
+    title: 'Les voyageurs',
     id: 'voyageurs'
   },
   {
-    title: 'philippe',
+    title: 'Philippe, ornithologue LPO',
     id: 'philippe'
   },
   {

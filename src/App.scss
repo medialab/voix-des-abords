@@ -1,3 +1,5 @@
+$rerc-color: #ffcf01;
+
 html {
   scroll-behavior: smooth;
 }
@@ -86,7 +88,52 @@ main .section {
   }
 }
 
+.ui-wrapper {
+  position: relative;
+  .ui-container {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    // justify-content: flex-end;
+    align-items: center;
+    .ui-contents {
+      pointer-events: all;
+      padding: 1rem;
+    }
+  }
+}
+
+.ui-group {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.ui-label {
+  padding-right: .5rem;
+}
+
+.sliding-bar-container {
+  cursor: pointer;
+  background: grey;
+  width: 5rem;
+  height: 1.2rem;
+  position: relative;
+
+  .sliding-bar-actual {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3rem;
+    height: 1.2rem;
+    background: black;
+    pointer-events: none;
+  }
+}
+
 .section.voyageurs {
+  $part-height: calc(100vh - 3rem);
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
@@ -97,10 +144,12 @@ main .section {
     justify-content: stretch;
     .part {
       flex: 1;
-      max-height: calc(90vh);
+      max-height: $part-height;
+      min-height: $part-height;
       .TweetsMap-container,
       .VoyageVideo-container {
-        max-height: calc(90vh);
+      max-height: $part-height;
+      min-height: $part-height;
       }
     }
   }
@@ -110,13 +159,14 @@ main .section {
 .TweetsMap {
   .departements {
     path {
-      stroke: black;
-      fill: transparent;
+      stroke: grey;
+      // fill: transparent;
     }
   }
   .lignes {
     .ligne {
-      stroke: black;
+      stroke: $rerc-color;
+      stroke-width: 4px;
     }
   }
   .rivieres {
@@ -130,7 +180,8 @@ main .section {
     .station {
       circle {
         stroke: white;
-        fill: black;
+        fill: $rerc-color;
+        opacity: 1;
       }
       text {
         opacity: 0;
@@ -146,23 +197,85 @@ main .section {
   }
 }
 
+.VoyageVideo {
+  position: relative;
+}
+
+.tweets-overlay-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  .tweet-content {
+    padding: .5rem;
+    position: absolute;
+    font-size: 10px;
+    overflow: hidden;
+    background: black;
+    color: white;
+  }
+}
+
+.tooltip-container {
+  pointer-events: none;
+  position: relative;
+  .tooltip-wrapper {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    top: -2rem;
+    width: 20rem;
+    left: -10rem;
+    justify-content: center;
+
+    .tooltip-content {
+      background: black;
+      color: white;
+      font-size: 9px;
+      padding: .5rem;
+    }
+  }
+  opacity: 0;
+  transition: .5s ease opacity;
+  &.is-visible {
+    opacity: 1;
+  }
+}
+
 .timeline {
   cursor: pointer;
   .segment {
     pointer-events: none;
     .bg-rect {
       stroke: white;
-      fill: green;
+      fill: $rerc-color;
       pointer-events: all;
+      transition: .5s ease all;
     }
     &.stop {
       .bg-rect {
-        fill: red;
+        fill: #ad8611;
       }
     }
 
     text {
-      font-size: 9px;
+      font-size: 8px;
+    }
+
+    &.status-past {
+      .bg-rect {
+        fill: lightgrey;
+      }
+      // &.stop {
+      //   .bg-rect {
+      //     fill: darkgrey;
+      //   }
+      // }
+    }
+    &.status-future {
+      .bg-rect {
+        opacity: .5;
+      }
     }
   }
 
@@ -170,12 +283,12 @@ main .section {
     pointer-events: none;
     fill: black;
     transition: .5s ease all;
-    opacity: .4;
+    opacity: 0;
   }
 
   &:hover {
     .progress-bar {
-      opacity: .7;
+      opacity: .3;
     }
   }
 }
