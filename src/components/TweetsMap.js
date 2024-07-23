@@ -26,7 +26,7 @@ const TweetsMap = ({
       2.333333,
       48.866667,
     ])
-    projection.translate([width / 2, height / 2]);
+    projection.translate([width / 2, height / 3]);
 
     return projection;
   }, [width, height, currentScale]);

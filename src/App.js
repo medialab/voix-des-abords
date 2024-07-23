@@ -2,58 +2,17 @@ import { Link, } from "react-scroll";
 import axios from 'axios';
 import { csvParse } from 'd3-dsv';
 import { useEffect, useState } from 'react';
+import Md from 'react-markdown';
 
+import ImageGallery from "./components/ImagesGallery";
 import Voyageurs from './components/Voyageurs';
 import './App.scss';
-
-const metadata = {
-  title: 'Voix des abords',
-  subtitle: 'Enquêter sur les abords de voies du RER francilien',
-}
-
-const menuData = [
-  {
-    title: 'Les voyageurs',
-    id: 'voyageurs'
-  },
-  {
-    title: 'Philippe, ornithologue LPO',
-    id: 'philippe'
-  },
-  {
-    title: 'La renouée du Japon',
-    id: 'renouée'
-  },
-  {
-    title: 'SNCF Réseaux',
-    id: 'sncf'
-  },
-  {
-    title: 'Les cailloux',
-    id: 'cailloux'
-  },
-  {
-    title: 'Les lézards',
-    id: 'lezards'
-  },
-  {
-    title: 'À propos',
-    id: 'a-propos'
-  },
-];
-
-const datasets = [
-  'departements.geojson',
-  'reseau-hydrographique.geojson',
-  'stations.csv',
-  'tweets.csv',
-  'trajets-rerc.csv',
-  'timecode-arrets-etampes-bfm.csv'
-];
+import {menuData, metadata, datasets, textsList} from './metadata'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState();
+  const [texts, setTexts] = useState();
   const bottomMenuGroup = ['À propos'];
   useEffect(() => {
     datasets.reduce((cur, datasetName) => {
@@ -87,6 +46,30 @@ function App() {
         setData(result);
       })
   }, [])
+  useEffect(() => {
+    textsList.reduce((cur, textName) => {
+      return cur.then((res) => {
+        return new Promise((resolve, reject) => {
+          console.group('get ' + textName);
+          axios.get(`/texts/${textName}`, {
+            // onDownloadProgress: progressEvent => {
+            // }
+          })
+            .then(({ data: str }) => {  
+              resolve({ ...res, [textName]: str });
+            })
+            .catch(err => {
+              console.info('error', err);
+              console.groupEnd('get', textName);
+
+            })
+        })
+      })
+    }, Promise.resolve({}))
+      .then(result => {
+        setTexts(result);
+      })
+  }, []);
   return (
     <div className="App">
       <main>
@@ -94,13 +77,11 @@ function App() {
           <h1>{metadata.title}</h1>
           <h2>{metadata.subtitle}</h2>
           <h3>médialab Sciences Po</h3>
-          <ul className="authors">
-            <li>Investigatrice principale : Marie Boishus</li>
-            <li>Accompagnement scientifique : Robin de Mourat</li>
-            <li>Accompagnement méthodologique et technique : ...</li>
-          </ul>
+          <div className="short-credits">
+          <Md>{texts && texts['short-credits.md']}</Md>
+          </div>
           <div className="abstract">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id ipsum at sapien mollis pharetra. Vivamus eu ex at magna dapibus pretium. Cras ullamcorper ut turpis a lobortis. Duis a arcu a libero convallis cursus sed maximus nulla. Donec commodo, purus et aliquet bibendum, ipsum est auctor mi, non vulputate risus arcu at magna. Nulla sed orci sed neque dignissim sodales vitae eget sapien. Aliquam vestibulum massa ornare dignissim porttitor.
+          <Md>{texts && texts['abstract.md']}</Md>
           </div>
           <div className="menu-container">
             <ul className="menu">
@@ -128,9 +109,37 @@ function App() {
               case 'voyageurs':
                 return (
                   <Voyageurs
-                    {...{ title, id, data }}
+                    {...{ title, id, data, texts }}
                   />
-                )
+                );
+              case 'philippe':
+              case 'renouees':
+              case 'sncf':
+              case 'lezards':
+                return (
+                  <section id={id} className="section">
+                    <h2>{title}</h2>
+                    <div className="layout-illustrated">
+                      <div className="layout-element text-element">
+                      <Md>{texts && texts[`${id}.md`]}</Md>
+                      </div>
+                      <div className="layout-element media-element">
+                       <ImageGallery images={['placeholder.jpg', 'placeholder.jpg']} />
+                      </div>
+                    </div>
+                  </section>
+                );
+              case 'cailloux':
+              case 'a-propos':
+                return (
+                  <section id={id} className="section">
+                    <h2>{title}</h2>
+                    <div className="layout-text-only">
+                      <Md>{texts && texts[`${id}.md`]}</Md>
+                    </div>
+                  </section>
+                );
+
               default:
                 return (
                   <section id={id} className="section">

@@ -4,6 +4,7 @@ import VoyageVideoContainer from "./VoyageVideo";
 
 const Voyageurs = ({
   data,
+  texts,
   title,
   id
 }) => {
@@ -14,6 +15,7 @@ const Voyageurs = ({
         <div className="part">
           <VoyageVideoContainer
             data={data}
+            text={texts && texts['voyageurs.md']}
           />
         </div>
         <div className="part">

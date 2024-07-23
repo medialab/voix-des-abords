@@ -254,7 +254,7 @@ main .section {
     }
     &.stop {
       .bg-rect {
-        fill: #ad8611;
+        fill: #ef9343;
       }
     }
 
@@ -289,6 +289,26 @@ main .section {
   &:hover {
     .progress-bar {
       opacity: .3;
+    }
+  }
+}
+
+.layout-text-only {
+  column-count: 2;
+  column-gap: 1rem;
+}
+
+.layout-illustrated {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.ImageGallery {
+  .main-image {
+    cursor: pointer;
+    transition: .5s ease opacity;
+    &:hover{
+      opacity: .8;
     }
   }
 }

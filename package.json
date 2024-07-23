@@ -13,8 +13,10 @@
     "d3-dsv": "^3.0.1",
     "d3-geo": "^3.1.1",
     "d3-scale": "^4.0.2",
+    "raw-loader": "^4.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
     "react-measure": "^2.5.2",
     "react-media": "^1.10.0",
     "react-player": "^2.16.0",
@@ -22,7 +24,8 @@
     "react-scroll": "^1.9.0",
     "react-type-animation": "^3.2.0",
     "sass": "^1.77.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yet-another-react-lightbox": "^3.21.1"
   },
   "scripts": {
     "start": "react-scripts start",

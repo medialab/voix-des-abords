@@ -3,6 +3,7 @@ import { useState, useMemo, useRef } from 'react';
 import ReactPlayer from 'react-player';
 import Measure from 'react-measure';
 import { TypeAnimation } from 'react-type-animation';
+import Md from 'react-markdown';
 
 const timecodeToSeconds = str => {
   const parts = str.split(':').map(n => +n);
@@ -14,24 +15,27 @@ const totalDuration = timecodeToSeconds('52:43');
 const VoyageVideo = ({
   data,
   width = 500,
-  height = 500
+  height = 500,
+  text
 }) => {
   const margin = 10;
   const timelineHeight = 100;
   const uiHeight = 100;
   const barHeight = timelineHeight / 4;
-  const videoHeight = height - timelineHeight - uiHeight;
 
   const tweetsPresenceRatioBarWidth = 50;
 
   const playerRef = useRef(null);
+  const [textHeight, setTextHeight] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentSegment, setCurrentSegment] = useState();
   const [tooltipText, setTooltipText] = useState('');
   const [tooltipIsVisible, setTooltipIsVisible] = useState(false);
 
-  const [tweetsPresenceRatio, setTweetsPresenceRatio] = useState(0);
+  const [tweetsPresenceRatio, setTweetsPresenceRatio] = useState(0.5);
+
+  const videoHeight = height - timelineHeight - uiHeight - textHeight;
 
   const [tooltipX, setTooltipX] = useState(0);
   const timecodeScale = useMemo(() => scaleLinear().domain([0, totalDuration]).range([margin, width - margin * 2]), [width])
@@ -42,7 +46,7 @@ const VoyageVideo = ({
       const stops = data['timecode-arrets-etampes-bfm.csv'].map(datum => {
         const { station } = datum;
         const thatStation = stationsMap[station];
-        const theseTweets = thatStation.tweets.split('|').map(id => tweetsMap[id])
+        const theseTweets = Array.from(new Set(thatStation.tweets.split('|'))).map(id => tweetsMap[id])
         const fromSeconds = timecodeToSeconds(datum['timecode-arret']);
         const toSeconds = timecodeToSeconds(datum['timecode-depart']);
         return {
@@ -116,6 +120,19 @@ const VoyageVideo = ({
   }
   return (
     <div className="VoyageVideo">
+      <Measure
+      bounds
+      onResize={contentRect => {
+        setTextHeight(contentRect.bounds.height)
+      }}
+    >
+      {({ measureRef }) => (
+        <div ref={measureRef} className="text-container">
+          <Md>{text}</Md>
+        </div>
+      )}
+    </Measure>
+      
       <ReactPlayer
         width={width}
         height={videoHeight}
@@ -137,6 +154,7 @@ const VoyageVideo = ({
       <div 
         className="tweets-overlay-container"
         style={{
+          top: textHeight,
           width,
           height: videoHeight,
           opacity: tweetsPresenceRatio
