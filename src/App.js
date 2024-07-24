@@ -8,6 +8,7 @@ import ImageGallery from "./components/ImagesGallery";
 import Voyageurs from './components/Voyageurs';
 import './App.scss';
 import {menuData, metadata, datasets, textsList, images} from './metadata'
+import Philippe from "./components/Philippe";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -108,6 +109,12 @@ function App() {
         {
           menuData.map(({ title, id }) => {
             switch (id) {
+              case 'philippe':
+                return (
+                  <Philippe
+                    {...{ title, id, data, texts }}
+                  />
+                );
               case 'voyageurs':
                 return (
                   <Voyageurs
@@ -220,7 +227,7 @@ function App() {
           </div>
 
         </aside>
-        <button onClick={() => setMenuOpen(!menuOpen)} className={`drawer-button ${menuOpen ? 'is-open' : ''}`}>
+        <button onClick={() => setMenuOpen(!menuOpen)} className={`btn drawer-button ${menuOpen ? 'is-open' : ''}`}>
           <span>{menuOpen ? '❌' : '☰'}</span>
         </button>
       </div>

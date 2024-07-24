@@ -63,7 +63,9 @@ export const datasets = [
   // 'trajets-rerc.csv',
   'timecode-arrets-etampes-bfm.csv',
   'tweets-analyses.csv',
-  'twitter_and_stations_network.json'
+  'twitter_and_stations_network.json',
+  'timecode_capsules_oiseaux.csv',
+  'lpo_walks.json'
 ];
 
 export const textsList = [

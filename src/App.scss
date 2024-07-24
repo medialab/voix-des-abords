@@ -74,6 +74,16 @@ main .section {
     transition: 0.5s ease left;
     box-sizing: border-box;
     pointer-events: all;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-header {
+      margin-top: 1rem;
+    }
   }
 
   .drawer-button {
@@ -507,4 +517,8 @@ main .section {
       }
     }
   }
+}
+
+.Philippe-container {
+  max-height: 100vh;
 }
