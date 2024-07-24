@@ -4,6 +4,26 @@ export const metadata = {
   subtitle: 'Enquêter sur les abords de voies du RER francilien',
 }
 
+export const images = {
+  'renouees': `
+placeholder.jpg| Mon titre 1 | Ma description
+placeholder.jpg| Mon titre 2 | Ma description
+`,
+  'sncf': `
+placeholder.jpg| Mon titre 1 | Ma description
+placeholder.jpg| Mon titre 2 | Ma description
+`,
+  'lezards': `
+placeholder.jpg| Mon titre 1 | Ma description
+placeholder.jpg| Mon titre 2 | Ma description
+`,
+  'cailloux': `
+placeholder.jpg| Mon titre 1 | Ma description
+placeholder.jpg| Mon titre 2 | Ma description
+placeholder.jpg| Mon titre 3 | Ma description
+`,
+}
+
 export const menuData = [
   {
     title: 'Les voyageurs',

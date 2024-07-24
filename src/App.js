@@ -7,7 +7,7 @@ import Md from 'react-markdown';
 import ImageGallery from "./components/ImagesGallery";
 import Voyageurs from './components/Voyageurs';
 import './App.scss';
-import {menuData, metadata, datasets, textsList} from './metadata'
+import {menuData, metadata, datasets, textsList, images} from './metadata'
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -114,10 +114,18 @@ function App() {
                     {...{ title, id, data, texts }}
                   />
                 );
-              case 'philippe':
               case 'renouees':
               case 'sncf':
               case 'lezards':
+              case 'cailloux':
+                const formatedImages  = images[id].split(/\n/g).map(s => s.trim()).filter(s => s).map(text => {
+                  const [src, title = '', description = ''] = text.split('|')
+                  return {
+                    src: `${process.env.PUBLIC_URL}/images/${src}`,
+                    title,
+                    description,
+                  }
+                });
                 return (
                   <section id={id} className="section">
                     <h2>{title}</h2>
@@ -126,12 +134,11 @@ function App() {
                       <Md>{texts && texts[`${id}.md`]}</Md>
                       </div>
                       <div className="layout-element media-element">
-                       <ImageGallery images={['placeholder.jpg', 'placeholder.jpg']} />
+                       <ImageGallery images={formatedImages} />
                       </div>
                     </div>
                   </section>
                 );
-              case 'cailloux':
               case 'a-propos':
                 return (
                   <section id={id} className="section">
