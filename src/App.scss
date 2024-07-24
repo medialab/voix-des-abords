@@ -521,4 +521,34 @@ main .section {
 
 .Philippe-container {
   max-height: 100vh;
+  .philippe {
+    .paths-container {
+      .path-group {
+        cursor: pointer;
+        .background-path {
+          fill: transparent;
+          stroke: grey;
+        }
+        &.is-active {
+          .background-path {
+            stroke: red;
+            stroke-width: 3px;
+          }
+        }
+      }
+    }
+
+    .timeline-container {
+      .timeline-background {
+        fill: lightgrey;
+        stroke: none;
+        cursor: pointer;
+      }
+      .timeline-marker {
+        pointer-events: none;
+        fill: red;
+        stroke: none;
+      }
+    }
+  }
 }
