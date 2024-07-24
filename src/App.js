@@ -15,7 +15,32 @@ function App() {
   const [texts, setTexts] = useState();
   const bottomMenuGroup = ['À propos'];
   useEffect(() => {
-    datasets.reduce((cur, datasetName) => {
+    textsList.reduce((cur, textName) => {
+      return cur.then((res) => {
+        return new Promise((resolve, reject) => {
+          console.group('get ' + textName);
+          axios.get(`${process.env.PUBLIC_URL}/texts/${textName}`, {
+            // onDownloadProgress: progressEvent => {
+            // }
+          })
+            .then(({ data: str }) => {  
+              console.info('success')
+              console.groupEnd('get ' + textName);
+              resolve({ ...res, [textName]: str });
+            })
+            .catch(err => {
+              console.info('error', err);
+              console.groupEnd('get ' + textName);
+
+            })
+        })
+      })
+    }, Promise.resolve({}))
+      .then(result => {
+        console.info('all texts are retrieved!')
+        setTexts(result);
+      
+    return datasets.reduce((cur, datasetName) => {
       return cur.then((res) => {
         return new Promise((resolve, reject) => {
           console.group('get ' + datasetName);
@@ -45,34 +70,8 @@ function App() {
         console.info('all data is retrieved!')
         setData(result);
       })
+    })
   }, [])
-  useEffect(() => {
-    textsList.reduce((cur, textName) => {
-      return cur.then((res) => {
-        return new Promise((resolve, reject) => {
-          console.group('get ' + textName);
-          axios.get(`${process.env.PUBLIC_URL}/texts/${textName}`, {
-            // onDownloadProgress: progressEvent => {
-            // }
-          })
-            .then(({ data: str }) => {  
-              console.info('success')
-              console.groupEnd('get ' + textName);
-              resolve({ ...res, [textName]: str });
-            })
-            .catch(err => {
-              console.info('error', err);
-              console.groupEnd('get ' + textName);
-
-            })
-        })
-      })
-    }, Promise.resolve({}))
-      .then(result => {
-        console.info('all texts are retrieved!')
-        setTexts(result);
-      })
-  }, []);
   return (
     <div className="App">
       <main>

@@ -182,7 +182,7 @@ const VoyageVideo = ({
                   fontSize: 10 + (+tweet.retweet_count)
                 }}
                 className="tweet-content" key={i}>
-                  <p>{tweet.user_screen_name}</p>
+                  <p>@{tweet.user_screen_name}</p>
                   <p>{new Date(tweet.local_time).toLocaleDateString()} - {new Date(tweet.local_time).toLocaleTimeString()}</p>
                 <p>
                 <TypeAnimation
@@ -289,7 +289,7 @@ const VoyageVideo = ({
                       <>
                         <g 
                           style={{transition: '.5s ease all'}} 
-                          transform={`translate(${index === segments.length - 1 ? -(fromX - width) - margin * 3 : 0}, ${barHeight + 10})rotate(40)`}
+                          transform={`translate(${0}, ${barHeight + 10})rotate(40)`}
                         >
                         
                           <text>

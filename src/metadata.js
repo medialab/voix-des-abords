@@ -42,6 +42,7 @@ export const datasets = [
   'tweets.csv',
   // 'trajets-rerc.csv',
   'timecode-arrets-etampes-bfm.csv',
+  'tweets-analyses.csv',
   'twitter_and_stations_network.json'
 ];
 

@@ -4,6 +4,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.btn {
+  cursor: pointer;
+}
+
 .section {
   min-height: 100vh;
 }
@@ -128,7 +132,7 @@ main .section {
 }
 
 .ui-label {
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }
 
 .sliding-bar-container {
@@ -165,13 +169,12 @@ main .section {
       // min-height: $part-height;
       .TweetsMap-container,
       .VoyageVideo-container {
-      max-height: $part-height;
-      min-height: $part-height;
+        max-height: $part-height;
+        min-height: $part-height;
       }
     }
   }
 }
-
 
 .TweetsMap {
   .departements {
@@ -190,27 +193,27 @@ main .section {
 
   .map-layer {
     opacity: 1;
-    transition: .5s all ease;
+    transition: 0.5s all ease;
     &.is-hidden {
       opacity: 0;
     }
   }
   .edges {
     .edge {
-      transition: .5s ease all;
+      transition: 0.5s ease all;
       stroke: grey;
       stroke-width: 1;
-      stroke-opacity: .5;
+      stroke-opacity: 0.1;
       &.segment {
         stroke: $rerc-color;
         stroke-width: 4px;
+        stroke-opacity: 0.5;
       }
     }
-    
   }
   .nodes {
     .node {
-      transition: .5s ease all;
+      transition: 0.5s ease all;
       pointer-events: all;
       circle {
         stroke: white;
@@ -230,13 +233,93 @@ main .section {
       text {
         pointer-events: none;
         opacity: 0;
-        transition: .5s ease all;
+        transition: 0.5s ease all;
       }
 
       &:hover {
         text {
           opacity: 1;
         }
+      }
+    }
+  }
+
+  .tooltip-element-wrapper {
+    pointer-events: none;
+    .tooltip-element-container {
+      transition: 0.5s ease opacity;
+      pointer-events: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      &.has-contents {
+        opacity: 1;
+      }
+      .tooltip {
+        background: black;
+        color: white;
+        padding: 0.2rem;
+        font-size: 8px;
+        position: absolute;
+      }
+    }
+  }
+}
+.analysis-panel-wrapper {
+  pointer-events: none;
+  .analysis-panel-container {
+    pointer-events: all;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background: rgba(100, 100, 100, 0.3);
+    width: 30%;
+    max-height: calc(100% - 2rem);
+    display: flex;
+    flex-flow: column nowrap;
+
+    .analysis-panel-header {
+      display: flex;
+      flex-flow: row nowrap;
+      .analysis-title {
+        flex: 1;
+        padding: 1rem;
+      }
+    }
+    .analysis-panel-body {
+      box-sizing: border-box;
+      max-height: 0;
+      overflow: hidden;
+      transition: 0.5s ease all;
+
+      .analysis-items-list {
+        padding: 0;
+        overflow: auto;
+      }
+      .analysis-item {
+        padding: 1rem;
+        background: rgba(200, 200, 200, 0.3);
+        transition: 0.5s ease all;
+        cursor: pointer;
+        &:hover {
+          background: rgba(200, 200, 200, 0.6);
+        }
+        &.is-active {
+          background: rgba(200, 200, 200, 0.8);
+          &:hover {
+            background: rgba(200, 200, 200, 1);
+          }
+        }
+      }
+    }
+
+    &.is-open {
+      background: rgba(230, 230, 230, 0.8);
+      .analysis-panel-body {
+        max-height: calc(100% - 1rem);
       }
     }
   }
@@ -253,7 +336,7 @@ main .section {
   pointer-events: none;
   overflow: hidden;
   .tweet-content {
-    padding: .5rem;
+    padding: 0.5rem;
     position: absolute;
     font-size: 10px;
     overflow: hidden;
@@ -281,11 +364,11 @@ main .section {
       background: black;
       color: white;
       font-size: 9px;
-      padding: .5rem;
+      padding: 0.5rem;
     }
   }
   opacity: 0;
-  transition: .5s ease opacity;
+  transition: 0.5s ease opacity;
   &.is-visible {
     opacity: 1;
   }
@@ -299,7 +382,7 @@ main .section {
       stroke: white;
       fill: $rerc-color;
       pointer-events: all;
-      transition: .5s ease all;
+      transition: 0.5s ease all;
     }
     &.stop {
       .bg-rect {
@@ -323,7 +406,7 @@ main .section {
     }
     &.status-future {
       .bg-rect {
-        opacity: .5;
+        opacity: 0.5;
       }
     }
   }
@@ -331,13 +414,13 @@ main .section {
   .progress-bar {
     pointer-events: none;
     fill: black;
-    transition: .5s ease all;
+    transition: 0.5s ease all;
     opacity: 0;
   }
 
   &:hover {
     .progress-bar {
-      opacity: .3;
+      opacity: 0.3;
     }
   }
 }
@@ -355,9 +438,9 @@ main .section {
 .ImageGallery {
   .main-image {
     cursor: pointer;
-    transition: .5s ease opacity;
-    &:hover{
-      opacity: .8;
+    transition: 0.5s ease opacity;
+    &:hover {
+      opacity: 0.8;
     }
   }
 }
