@@ -1,13 +1,12 @@
 
 
-import { useState, useMemo } from 'react';
-import Measure from 'react-measure';
-import { geoMercator } from "d3-geo";
-import { geoPath } from "d3-geo";
 import { extent } from 'd3-array';
+import { geoMercator, geoPath } from "d3-geo";
 import { scaleLinear } from 'd3-scale';
-import { Group, Line, Path } from './AnimatedComponents';
+import { useMemo, useState } from 'react';
 import Markdown from 'react-markdown';
+import Measure from 'react-measure';
+import { Group, Line, Path } from './AnimatedComponents';
 
 const visualizationLabels = {
   map: 'la géographie',
@@ -50,7 +49,22 @@ const TweetsMap = ({
   const [analysisVisible, setAnalysisVisible] = useState(false);
   const [hoveredNode, setHoveredNode] = useState();
   const [vizMode, setVizMode] = useState('map');
-  const analysesData = useMemo(() => data ? data['tweets-analyses.csv'] : [], [data])
+  const analysesData = useMemo(() => {
+    if (!data) {
+      return []
+    }
+    return data['tweets-analyses.csv'].map(datum => {
+      const inferedStations = datum.segments.split('|').map(s => s.split(' à ').map(e => e.trim())).reduce((res, tuple) => [...res, ...tuple], []).filter(d => d);
+      const transformed = ['user_screen_names', 'stations', 'segments'].reduce((res, key) => ({
+        ...res,
+        [key]: new Set(res[key].split('|').map(d => d.trim()).filter(d => d))
+      }), datum);
+      transformed.secondaryStations = new Set(inferedStations)
+      return transformed;
+    })
+   }, [data]);
+
+  const [activeAnalysis, setActiveAnalysis] = useState();
   const scaleBarScale = useMemo(() => scaleLinear().domain(mapScaleExtent).range([0, scaleBarWidth]), [mapScaleExtent, scaleBarWidth]);
   const networkZoomScale = useMemo(() => {
     const networkZoomScaleRange = [1, 3];
@@ -172,6 +186,14 @@ const TweetsMap = ({
                   return true;
                 })
                 .map(({ from, to, attributes, key }, index) => {
+                  let isActive = false;
+                  if (activeAnalysis) {
+                    if (attributes.type === 'segment') {
+                      const imprint = from.attributes.label + ' à ' + to.attributes.label;
+                      isActive = activeAnalysis.segments.has(imprint);
+                      // isActive = activeAnalysis.stations.has(edge.attributes.label)
+                    }
+                  }
                   let [x1, y1] = projection([+from.attributes.lng, +from.attributes.lat]);
                   let [x2, y2] = projection([+to.attributes.lng, +to.attributes.lat]);
                   if (vizMode === 'networkSimple') {
@@ -186,7 +208,7 @@ const TweetsMap = ({
                     y2 = yMixScale(+to.attributes.y);
                   }
                   return (
-                    <g className={`edge ${attributes.type}`}
+                    <g className={`edge ${attributes.type} ${isActive ? 'is-active' : ''}`}
                       key={key}
                     >
                       <Line
@@ -216,6 +238,16 @@ const TweetsMap = ({
                   return 1;
                 })
                 .map(node => {
+                  let isActive = false;
+                  let isActiveSecondary = false;
+                  if (activeAnalysis) {
+                    if (node.attributes.type === 'station') {
+                      isActive = activeAnalysis.stations.has(node.attributes.label);
+                      isActiveSecondary = !isActive && activeAnalysis.secondaryStations.has(node.attributes.label);
+                    }else if (node.attributes.type === 'twitter_user') {
+                      isActive = activeAnalysis.user_screen_names.has(node.attributes.label)
+                    }
+                  }
                   let [x, y] = projection([+node.attributes.lng, +node.attributes.lat]);
                   if (vizMode === 'networkSimple') {
                     x = xClassicScale(+node.attributes.xAlt);
@@ -226,14 +258,14 @@ const TweetsMap = ({
                   }
                   const radius = tweetsDotsScale(+node.attributes.nbTweets)
                   return (
-                    <Group className={`node ${node.attributes.type}`}
+                    <Group className={`node ${node.attributes.type} ${isActive ? 'is-active' : ''} ${isActiveSecondary ? 'is-active-secondary' : ''}`}
                       key={node.attributes.nom}
                       transform={`translate(${x}, ${y})`}
                     >
                       <circle
                         cx={0}
                         cy={0}
-                        r={radius}
+                        r={isActive && node.attributes.type === 'station' ? radius * 3 : radius}
                         onMouseOver={e => {
                           setHoveredNode(node)
                         }}
@@ -341,10 +373,15 @@ const TweetsMap = ({
           className={`analysis-panel-container ${analysisVisible ? 'is-open' : ''}`}
         >
           <div className="analysis-panel-header">
-            <div className="analysis-title">
+            <h3 className="analysis-title">
               Analyses
-            </div>
-            <button className="btn btn-toggle" onClick={() => setAnalysisVisible(!analysisVisible)}>
+            </h3>
+            <button className="btn btn-toggle" onClick={() => {
+              setAnalysisVisible(!analysisVisible);
+              // if (activeAnalysis) {
+              //   setActiveAnalysis();
+              // }
+            }}>
                 {analysisVisible ? 'cacher' : 'montrer'}
             </button>
           </div>
@@ -352,12 +389,22 @@ const TweetsMap = ({
             <ul className="analysis-items-list">
               {
                 analysesData.map(analysis => {
+                  const isActive = activeAnalysis && activeAnalysis.titre === analysis.titre;
                   return (
-                    <li key={analysis.titre} className="analysis-item">
-                      <div className="analysis-header">
+                    <li onClick={() => {
+                      if (isActive) {
+                        setActiveAnalysis();
+                      } else {
+                        setActiveAnalysis(analysis)
+                      }
+                    }} 
+                    key={analysis.titre} 
+                    className={`analysis-item ${isActive ? 'is-active': ''}`}
+                    >
+                      <div className="analysis-item-header">
                         <h4>{analysis.titre}</h4>
                       </div>
-                      <div className="analysis-body">
+                      <div className="analysis-item-body">
                         <Markdown>
                           {analysis.contenu}
                         </Markdown>

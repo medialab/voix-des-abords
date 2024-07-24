@@ -6,6 +6,10 @@ html {
 
 .btn {
   cursor: pointer;
+  border: none;
+  background: inherit;
+  font-size: inherit;
+  font-family: inherit;
 }
 
 .section {
@@ -209,6 +213,9 @@ main .section {
         stroke-width: 4px;
         stroke-opacity: 0.5;
       }
+      &.is-active {
+        stroke: red;
+      }
     }
   }
   .nodes {
@@ -219,7 +226,9 @@ main .section {
         stroke: white;
         opacity: 1;
         cursor: pointer;
+        transition: .5s ease all;
       }
+      
       &.station {
         circle {
           fill: $rerc-color;
@@ -230,15 +239,16 @@ main .section {
           fill: turquoise;
         }
       }
-      text {
-        pointer-events: none;
-        opacity: 0;
-        transition: 0.5s ease all;
+      &.is-active,
+      &.is-active-secondary {
+        circle {
+          stroke: red;
+          // stroke-width: 3;
+        }
       }
-
-      &:hover {
-        text {
-          opacity: 1;
+      &.station.is-active {
+        circle {
+          fill: red;
         }
       }
     }
@@ -277,9 +287,10 @@ main .section {
     top: 1rem;
     background: rgba(100, 100, 100, 0.3);
     width: 30%;
-    max-height: calc(100% - 2rem);
+    max-height: calc(100% - 3rem);
     display: flex;
     flex-flow: column nowrap;
+    justify-content: stretch;
 
     .analysis-panel-header {
       display: flex;
@@ -287,28 +298,46 @@ main .section {
       .analysis-title {
         flex: 1;
         padding: 1rem;
+        margin: 0;
+        font-weight: normal;
       }
     }
     .analysis-panel-body {
       box-sizing: border-box;
       max-height: 0;
-      overflow: hidden;
+      overflow: auto;
       transition: 0.5s ease all;
 
       .analysis-items-list {
         padding: 0;
+        margin: 0;
         overflow: auto;
       }
       .analysis-item {
         padding: 1rem;
-        background: rgba(200, 200, 200, 0.3);
+        background: rgba(200, 200, 200, 0);
         transition: 0.5s ease all;
         cursor: pointer;
+
+        .analysis-item-header {
+          h4 {
+            margin: 0;
+          }
+        }
+
+        .analysis-item-body {
+          overflow: hidden;
+          max-height: 0;
+          transition: .5s ease all;
+        }
         &:hover {
-          background: rgba(200, 200, 200, 0.6);
+          background: rgba(200, 200, 200, 0.2);
         }
         &.is-active {
           background: rgba(200, 200, 200, 0.8);
+          .analysis-item-body {
+            max-height: 100vh;
+          }
           &:hover {
             background: rgba(200, 200, 200, 1);
           }
@@ -319,7 +348,7 @@ main .section {
     &.is-open {
       background: rgba(230, 230, 230, 0.8);
       .analysis-panel-body {
-        max-height: calc(100% - 1rem);
+        max-height: calc(100vh - 1rem);
       }
     }
   }
