@@ -1,3 +1,3 @@
 - Investigatrice principale : Marie Boishus
-- Accompagnement scientifique : Robin de Mourat
-- Accompagnement méthodologique et technique : ...
+- Accompagnement : Robin de Mourat
+- Milieux de support : équipe technique, équipe design, atelier des milieux

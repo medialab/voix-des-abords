@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Md from 'react-markdown';
 
 import ImageGallery from "./components/ImagesGallery";
+import Home from "./components/Home";
 import Voyageurs from './components/Voyageurs';
 import './App.scss';
 import {menuData, metadata, datasets, textsList, images} from './metadata'
@@ -76,36 +77,15 @@ function App() {
   return (
     <div className="App">
       <main>
-        <section className="section header">
-          <h1>{metadata.title}</h1>
-          <h2>{metadata.subtitle}</h2>
-          <h3>médialab Sciences Po</h3>
-          <div className="short-credits">
-          <Md>{texts && texts['short-credits.md']}</Md>
-          </div>
-          <div className="abstract">
-          <Md>{texts && texts['abstract.md']}</Md>
-          </div>
-          <div className="menu-container">
-            <ul className="menu">
-              {
-                menuData.map(({ id, title }) => {
-                  return (
-                    <li key={id}>
-                      <Link
-                        to={id}
-                        activeClass="is-active"
-                        spy={true}
-                        smooth={true}
-                        className="section-link"
-                      >{title}</Link>
-                    </li>
-                  )
-                })
-              }
-            </ul>
-          </div>
-        </section>
+        <Home
+          {
+            ...{
+              metadata,
+              texts,
+              menuData,
+            }
+          }
+        />
         {
           menuData.map(({ title, id }) => {
             switch (id) {

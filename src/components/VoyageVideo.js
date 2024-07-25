@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import Measure from 'react-measure';
 import { TypeAnimation } from 'react-type-animation';
 import Md from 'react-markdown';
+import { shuffle } from 'd3-array';
 
 const timecodeToSeconds = str => {
   const parts = str.split(':').map(n => +n);
@@ -19,9 +20,9 @@ const VoyageVideo = ({
   text
 }) => {
   const margin = 10;
-  const timelineHeight = 100;
+  const timelineHeight = 150;
   const uiHeight = 100;
-  const barHeight = timelineHeight / 4;
+  const barHeight = timelineHeight / 8;
 
   const tweetsPresenceRatioBarWidth = 50;
 
@@ -58,7 +59,7 @@ const VoyageVideo = ({
           fromTimecode: datum['timecode-arret'],
           toTimecode: datum['timecode-depart'],
           type: 'stop',
-          tweets: theseTweets,
+          tweets: shuffle(theseTweets),
         }
       });
       return stops.reduce((res, stop, index) => {
@@ -114,9 +115,9 @@ const VoyageVideo = ({
       }
       setCurrentSegment(positionnedSegment);
     }
-    if (!isPlaying) {
-      setIsPlaying(true)
-    }
+    // if (!isPlaying) {
+    //   setIsPlaying(true)
+    // }
   }
   return (
     <div className="VoyageVideo">
