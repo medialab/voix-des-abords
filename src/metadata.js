@@ -65,7 +65,8 @@ export const datasets = [
   'tweets-analyses.csv',
   'twitter_and_stations_network.json',
   'timecode_capsules_oiseaux.csv',
-  'lpo_walks.json'
+  'lpo_walks.json',
+  'reseau-ferre.geojson'
 ];
 
 export const textsList = [

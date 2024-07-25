@@ -114,9 +114,9 @@ const VoyageVideo = ({
       }
       setCurrentSegment(positionnedSegment);
     }
-    if (!isPlaying) {
-      setIsPlaying(true)
-    }
+    // if (!isPlaying) {
+    //   setIsPlaying(true)
+    // }
   }
   return (
     <div className="VoyageVideo">

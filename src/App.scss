@@ -198,10 +198,15 @@ main .section {
     }
   }
 
-  .rivieres {
-    path {
-      stroke: blue;
-      fill: transparent;
+  // .rivieres {
+  //   path {
+  //     stroke: blue;
+  //     fill: transparent;
+  //   }
+  // }
+  .reseau-ferre {
+    path{
+      opacity: .1;
     }
   }
 
@@ -321,7 +326,7 @@ main .section {
       .analysis-items-list {
         padding: 0;
         margin: 0;
-        overflow: auto;
+        // overflow: auto;
       }
       .analysis-item {
         padding: 1rem;
@@ -346,7 +351,7 @@ main .section {
         &.is-active {
           background: rgba(200, 200, 200, 0.8);
           .analysis-item-body {
-            max-height: 100vh;
+            max-height: 600vh;
           }
           &:hover {
             background: rgba(200, 200, 200, 1);
@@ -358,7 +363,7 @@ main .section {
     &.is-open {
       background: rgba(230, 230, 230, 0.8);
       .analysis-panel-body {
-        max-height: calc(100vh - 1rem);
+        max-height: calc(60vh - 1rem);
       }
     }
   }
@@ -519,9 +524,34 @@ main .section {
   }
 }
 
+.map-layer {
+  &.rivieres {
+    path {
+      stroke: blue;
+      fill: transparent;
+    }
+  }
+  &.reseau-ferre {
+    path {
+      stroke: grey;
+      stroke-dasharray: 4px;
+      fill: transparent;
+    }
+  }
+  &.cadastre {
+    path {
+      stroke: grey;
+      opacity: .1;
+      fill: transparent;
+    }
+  }
+  
+}
+
 .Philippe-container {
   max-height: 100vh;
   .philippe {
+    
     .paths-container {
       .path-group {
         cursor: pointer;
@@ -549,6 +579,10 @@ main .section {
         fill: red;
         stroke: none;
       }
+    }
+
+    .video-container {
+      cursor: pointer;
     }
   }
 }

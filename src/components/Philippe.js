@@ -53,18 +53,47 @@ const Philippe = ({
   const videoHeight = useMemo(() => videoWidth * .75, [videoWidth]);
   const linearCapsulesXScale = useMemo(() => activeBalade ? scaleLinear().domain([0, activeBalade.durationInSeconds]).range([width - videoWidth, width]) : undefined, [activeBalade, width, videoWidth]);
 
-  const timecodeToPosition = useMemo(() => (seconds, datum) => {
-    if (datum) {
-      const coords = datum.geometry.features.reduce((res, f) => [...res, ...f.geometry.coordinates], []);
-      const line = lineString(coords);
-      const lineSizeInKm = length(line, { units: 'kilometers' });
-      const relPosKm = seconds / datum.durationInSeconds * lineSizeInKm;
-      const pointPosition = along(line, relPosKm, { units: 'kilometers' }).geometry.coordinates;
+  const timecodeToPosition = useMemo(() => (seconds, balade) => {
+    if (balade) {
+      const segments = balade.geometry.features.map(feature => {
+        const { geometry: { coordinates } } = feature;
+        const line = lineString(coordinates);
+        const sizeInKm = length(line, { units: 'kilometers' });
+        return {
+          line,
+          sizeInKm
+        }
+      });
+      const sumInKm = segments.reduce((sum, s) => sum + s.sizeInKm, 0);
+      const relPosKm = seconds / balade.durationInSeconds * sumInKm;
+      let kmCount = 0;
+      let segmentIndex = 0;
+      let pointPosition = [0, 0];
+      while (kmCount < relPosKm && segmentIndex < segments.length) {
+        const thatSegment = segments[segmentIndex];
+        const thatSize = thatSegment.sizeInKm;
+        if (kmCount + thatSize > relPosKm) {
+          const relKm = relPosKm - kmCount;
+          pointPosition = along(thatSegment.line, relKm, { units: 'kilometers' }).geometry.coordinates;
+          break;
+        } else {
+          kmCount += thatSize;
+          segmentIndex += 1;
+        }
+      }
+      // continuous version
+      // const coords = balade.geometry.features.reduce((res, f) => [...res, ...f.geometry.coordinates], []);
+      // const line = lineString(coords);
+      // const lineSizeInKm = length(line, { units: 'kilometers' });
+      // const relPosKm = seconds / balade.durationInSeconds * lineSizeInKm;
+      // const pointPosition = along(line, relPosKm, { units: 'kilometers' }).geometry.coordinates;
       return pointPosition;
     }
     return [0, 0]
   }, []);
 
+  const rivieres = useMemo(() => inputData && inputData['reseau-hydrographique.geojson'], [inputData]);
+  const reseau = useMemo(() => inputData && inputData['reseau-ferre.geojson'], [inputData]);
   const data = useMemo(() => {
     if (!inputData) { return undefined; }
     const capsules = inputData['timecode_capsules_oiseaux.csv'].filter(c => c.caché === '');
@@ -115,9 +144,9 @@ const Philippe = ({
       const pointPosition = timecodeToPosition(playedSeconds, activeBalade);
       setBaladeCoordinates(pointPosition);
     }
-    if (!isPlaying) {
-      setIsPlaying(true)
-    }
+    // if (!isPlaying) {
+    //   setIsPlaying(true)
+    // }
   }
   return (
     <section id={id} className="section philippe">
@@ -139,6 +168,33 @@ const Philippe = ({
         {
           data && activeBalade ?
             <>
+              <g className={`rivieres map-layer`}>
+                {
+                  rivieres.features.map((feature, id) => {
+                    return (
+                      <path
+                        key={id}
+                        // title={feature.properties.objectid}
+                        d={project(feature)}
+                      />
+                    )
+                  })
+                }
+              </g>
+              <g className={`reseau-ferre map-layer`}>
+                {
+                  reseau.features.map((feature, id) => {
+                    return (
+                      <path
+                        key={id}
+                        // title={feature.properties.objectid}
+                        d={project(feature)}
+                      />
+                    )
+                  })
+                }
+              </g>
+
               <g className="paths-container">
                 {
                   data.map(datum => {
@@ -199,6 +255,9 @@ const Philippe = ({
               >
                 <div xmlns="http://www.w3.org/1999/xhtml"
                   className={`video-container`}
+                  onClick={() => {
+                    setIsPlaying(!isPlaying)
+                  }}
                 >
                   <ReactPlayer
                     width={videoWidth}
@@ -208,9 +267,9 @@ const Philippe = ({
                     ref={playerRef}
                     playing={isPlaying}
                     onPlay={() => {
-                      if (!isPlaying) {
-                        setIsPlaying(true)
-                      }
+                      // if (!isPlaying) {
+                      //   setIsPlaying(true)
+                      // }
                     }}
                     onPause={() => {
                       // if (isPlaying) {

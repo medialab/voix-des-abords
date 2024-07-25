@@ -53,7 +53,7 @@ const TweetsMap = ({
     if (!data) {
       return []
     }
-    return data['tweets-analyses.csv'].map(datum => {
+    return data['tweets-analyses.csv'].filter(d => d.titre).map(datum => {
       const inferedStations = datum.segments.split('|').map(s => s.split(' à ').map(e => e.trim())).reduce((res, tuple) => [...res, ...tuple], []).filter(d => d);
       const transformed = ['user_screen_names', 'stations', 'segments'].reduce((res, key) => ({
         ...res,
@@ -86,6 +86,7 @@ const TweetsMap = ({
 
   const departements = useMemo(() => data && data['departements.geojson'], [data]);
   const rivieres = useMemo(() => data && data['reseau-hydrographique.geojson'], [data]);
+  const reseauFerre = useMemo(() => data && data['reseau-ferre.geojson'], [data]);
   /** dots data */
   // const tweetsExtentByStation = useMemo(() => {
   //   return stations && extent(data['stations.csv'].map(datum => +datum.nbTweets));
@@ -156,6 +157,19 @@ const TweetsMap = ({
                   title={feature.properties.nom}
                   d={project(feature)}
                   fill={`url(#diagonalHatch)`}
+                />
+              )
+            })
+          }
+        </g>
+        <g className={`reseau-ferre map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
+          {
+            reseauFerre.features.map((feature, id) => {
+              return (
+                <Path
+                  key={id}
+                  // title={feature.properties.objectid}
+                  d={project(feature)}
                 />
               )
             })
