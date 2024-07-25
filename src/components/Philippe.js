@@ -68,6 +68,18 @@ const Capsule = ({
         r={radius}
         fill={color}
       />
+      {
+        type === 'capsule' ?
+        <text 
+          textAnchor="middle"
+          x={0}
+          y={radius / 3}
+          fill={isActive ? 'white' : 'none'}
+          stroke={isActive ? 'none' : 'white'}
+          fontSize={isActive ? 7 : 4}
+        >▶</text>
+        : null
+      }
     </g>
 
   )
