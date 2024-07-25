@@ -642,6 +642,7 @@ main .section {
     }
 
     .Capsule {
+      cursor: pointer;
       .capsule-tooltip-wrapper {
         pointer-events: none;
         transition: 0.5s ease all;

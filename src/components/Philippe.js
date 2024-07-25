@@ -277,10 +277,14 @@ const Philippe = ({
                   activeBalade.capsules.map((capsule, capsuleIndex) => {
                     const [x, y] = projection(capsule.coordinates);
                     const isActive = capsule.durationInSeconds ? currentVideoTime > capsule.timecodeInSeconds && currentVideoTime <= capsule.timecodeInSeconds + capsule.durationInSeconds : currentVideoTime > capsule.timecodeInSeconds && currentVideoTime <= capsule.timecodeInSeconds + TOOLTIP_VISIBILITY_IN_SECONDS;
-
+                    const handleClick = () => {
+                      if (playerRef && playerRef.current) {
+                        playerRef.current.seekTo(capsule.timecodeInSeconds)
+                      }
+                    }
                     return (
                       <g className={`capsule-container`} key={capsuleIndex}>
-                        <g className="capsule-group spatialized-capsule-container" key={capsuleIndex} transform={`translate(${x}, ${y})`}>
+                        <g onClick={handleClick} className="capsule-group spatialized-capsule-container" key={capsuleIndex} transform={`translate(${x}, ${y})`}>
                           <Capsule {...capsule} isActive={isActive} currentVideoTime={currentVideoTime} screenWidth={width} />
                         </g>
                       </g>
@@ -358,15 +362,18 @@ const Philippe = ({
                     const x = linearCapsulesXScale(capsule.timecodeInSeconds);
                     const x2 = capsule.durationInSeconds ? linearCapsulesXScale(capsule.timecodeInSeconds + capsule.durationInSeconds) : undefined;
                     const isActive = capsule.durationInSeconds ? currentVideoTime > capsule.timecodeInSeconds && currentVideoTime <= capsule.timecodeInSeconds + capsule.durationInSeconds : currentVideoTime > capsule.timecodeInSeconds && currentVideoTime <= capsule.timecodeInSeconds + TOOLTIP_VISIBILITY_IN_SECONDS;
-                    // console.log(x2, x, capsule.timecodeInSeconds, capsule.duration)
+                    const handleClick = () => {
+                      if (playerRef && playerRef.current) {
+                        playerRef.current.seekTo(capsule.timecodeInSeconds)
+                      }
+                    }
                     return (
-                      <g className="capsule-container linear-capsule-container" key={capsuleIndex} transform={`translate(${x}, ${videoHeight + 10})`}>
+                      <g className="capsule-container linear-capsule-container" onClick={handleClick} key={capsuleIndex} transform={`translate(${x}, ${videoHeight + 10})`}>
                         {
                           x2 ?
                           <rect
                             stroke="white"
-                            fill="grey"
-                            fillOpacity={.7}
+                            fill="url(#diagonalHatchWhite)"
                             style={{pointerEvents: 'none'}}
                             x={0}
                             width={x2 - x}
@@ -392,6 +399,12 @@ const Philippe = ({
             </>
             : null
         }
+        <pattern id={`diagonalHatchWhite`} patternUnits="userSpaceOnUse" width="4" height="4">
+        <path d="M-1,1 l2,-2
+                      M0,4 l4,-4
+                      M3,5 l2,-2"
+          style={{ stroke: 'white', opacity: 1, strokeWidth: 1 }} />
+      </pattern>
       </svg>
     </section>
   )
