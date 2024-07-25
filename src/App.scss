@@ -404,6 +404,11 @@ main .section {
         padding: 1rem;
         margin: 0;
         font-weight: normal;
+        font-size: 1rem;
+        &.is-active {
+          font-weight: 800;
+          color: red;
+        }
       }
     }
     .analysis-panel-body {

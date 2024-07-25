@@ -387,7 +387,7 @@ const TweetsMap = ({
           className={`analysis-panel-container ${analysisVisible ? 'is-open' : ''}`}
         >
           <div className="analysis-panel-header">
-            <h3 className="analysis-title">
+            <h3 className={`analysis-title ${activeAnalysis ? 'is-active' : ''}`}>
               Analyses
             </h3>
             <button className="btn btn-toggle" onClick={() => {

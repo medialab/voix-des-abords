@@ -20,9 +20,9 @@ const VoyageVideo = ({
   text
 }) => {
   const margin = 10;
-  const timelineHeight = 100;
+  const timelineHeight = 150;
   const uiHeight = 100;
-  const barHeight = timelineHeight / 4;
+  const barHeight = timelineHeight / 8;
 
   const tweetsPresenceRatioBarWidth = 50;
 
