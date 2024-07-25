@@ -62,14 +62,11 @@ const TweetsMap = ({
       transformed.secondaryStations = new Set(inferedStations)
       return transformed;
     })
-   }, [data]);
+  }, [data]);
 
   const [activeAnalysis, setActiveAnalysis] = useState();
   const scaleBarScale = useMemo(() => scaleLinear().domain(mapScaleExtent).range([0, scaleBarWidth]), [mapScaleExtent, scaleBarWidth]);
-  const networkZoomScale = useMemo(() => {
-    const networkZoomScaleRange = [1, 3];
-    return scaleLinear().domain(mapScaleExtent).range(networkZoomScaleRange)
-  }, [mapScaleExtent]);
+
   const uiHeight = 100;
   const projection = useMemo(() => { // def les bonnes valeurs pour la config de la projection // enregistrer dans le state // les appliquer dans la projection
 
@@ -108,7 +105,7 @@ const TweetsMap = ({
     const max = width * height * currentScale * 0.0000000004;
     const tweetsDotsExtent = [max * .1, max];
     // const margin = 10;
-    const xRangeExtent = [0, width]
+    const xRangeExtent = [width / 5, width - width/5]
     const yRangeExtent = [height, 0];
     return {
       xClassicScale: scaleLinear().range(xRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.xAlt))),
@@ -121,16 +118,28 @@ const TweetsMap = ({
 
   const project = geoPath().projection(projection);
 
+  const scaleNetworkXPosition = useMemo(() => (x) => {
+    const scaleRatio = (currentScale / 10000);
+    const scaledCenter = (width / 2) * scaleRatio;
+    return x * scaleRatio - (scaledCenter - width / 2);
+
+  }, [currentScale, width]);
+  const scaleNetworkYPosition = useMemo(() => (y) => {
+    const scaleRatio = (currentScale / 10000);
+    const scaledCenter = (height / 2) * scaleRatio;
+    return y * scaleRatio - (scaledCenter - height / 2);
+  }, [currentScale, height]);
+
   const hoveredNodeTooltipData = useMemo(() => {
     if (hoveredNode) {
       const node = hoveredNode;
       let [x, y] = projection([+node.attributes.lng, +node.attributes.lat]);
       if (vizMode === 'networkSimple') {
-        x = xClassicScale(+node.attributes.xAlt);
-        y = yClassicScale(+node.attributes.yAlt);
+        x = scaleNetworkXPosition(xClassicScale(+node.attributes.xAlt));
+        y = scaleNetworkYPosition(yClassicScale(+node.attributes.yAlt));
       } else if (vizMode === 'networkSpatialized') {
-        x = xMixScale(+node.attributes.x);
-        y = yMixScale(+node.attributes.y);
+        x = scaleNetworkXPosition(xMixScale(+node.attributes.x));
+        y = scaleNetworkYPosition(yMixScale(+node.attributes.y));
       }
       const radius = tweetsDotsScale(+node.attributes.nbTweets);
       return {
@@ -141,53 +150,62 @@ const TweetsMap = ({
         content: `${node.attributes.label} (${node.attributes.type === 'station' ? 'station' : 'utilisateur twitter'} - ${node.attributes.nbTweets} tweets)`
       }
     }
-  }, [hoveredNode, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale])
+  }, [hoveredNode, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale, scaleNetworkXPosition, scaleNetworkYPosition]);
+
+
   return !(departements) ? 'chargement' : (
     <svg width={width} height={height} className="TweetsMap">
       <g
-        transform={`translate(${vizMode === 'map' ? 0 : width / 2 - width / 2 * networkZoomScale(currentScale)}, ${vizMode === 'map' ? 0 : height / 2 - height / 2 * networkZoomScale(currentScale)}) scale(${vizMode === 'map' ? 1 : networkZoomScale(currentScale)})`}
-        transformOrigin={'center'}
+      // transform={`translate(${vizMode === 'map' ? 0 : width / 2 - width / 2 * networkZoomScale(currentScale)}, ${vizMode === 'map' ? 0 : height / 2 - height / 2 * networkZoomScale(currentScale)}) scale(${vizMode === 'map' ? 1 : networkZoomScale(currentScale)})`}
+      // transformOrigin={'center'}
       >
-        <g className={`departements map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
-          {
-            departements.features.map((feature, id) => {
-              return (
-                <Path
-                  key={id}
-                  title={feature.properties.nom}
-                  d={project(feature)}
-                  fill={`url(#diagonalHatch)`}
-                />
-              )
-            })
-          }
-        </g>
-        <g className={`reseau-ferre map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
-          {
-            reseauFerre.features.map((feature, id) => {
-              return (
-                <Path
-                  key={id}
-                  // title={feature.properties.objectid}
-                  d={project(feature)}
-                />
-              )
-            })
-          }
-        </g>
-        <g className={`rivieres map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
-          {
-            rivieres.features.map((feature, id) => {
-              return (
-                <Path
-                  key={id}
-                  // title={feature.properties.objectid}
-                  d={project(feature)}
-                />
-              )
-            })
-          }
-        </g>
+        {
+          vizMode === 'map' ?
+            <>
+              <g className={`departements map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
+                {
+                  departements.features.map((feature, id) => {
+                    return (
+                      <Path
+                        key={id}
+                        title={feature.properties.nom}
+                        d={project(feature)}
+                        fill={feature.properties.nom === 'Paris' ? `url(#diagonalHatchDense)` : `url(#diagonalHatch)`}
+                      />
+                    )
+                  })
+                }
+              </g>
+              <g className={`reseau-ferre map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
+                {
+                  reseauFerre.features.map((feature, id) => {
+                    return (
+                      <Path
+                        key={id}
+                        // title={feature.properties.objectid}
+                        d={project(feature)}
+                      />
+                    )
+                  })
+                }
+              </g>
+              <g className={`rivieres map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
+                {
+                  rivieres.features.map((feature, id) => {
+                    return (
+                      <Path
+                        key={id}
+                        // title={feature.properties.objectid}
+                        d={project(feature)}
+                      />
+                    )
+                  })
+                }
+              </g>
+            </>
+            : null
+        }
+
         <g className="edges">
           {
             networkData ?
@@ -211,15 +229,15 @@ const TweetsMap = ({
                   let [x1, y1] = projection([+from.attributes.lng, +from.attributes.lat]);
                   let [x2, y2] = projection([+to.attributes.lng, +to.attributes.lat]);
                   if (vizMode === 'networkSimple') {
-                    x1 = xClassicScale(+from.attributes.xAlt);
-                    y1 = yClassicScale(+from.attributes.yAlt);
-                    x2 = xClassicScale(+to.attributes.xAlt);
-                    y2 = yClassicScale(+to.attributes.yAlt);
+                    x1 = scaleNetworkXPosition(xClassicScale(+from.attributes.xAlt));
+                    y1 = scaleNetworkYPosition(yClassicScale(+from.attributes.yAlt));
+                    x2 = scaleNetworkXPosition(xClassicScale(+to.attributes.xAlt));
+                    y2 = scaleNetworkYPosition(yClassicScale(+to.attributes.yAlt));
                   } else if (vizMode === 'networkSpatialized') {
-                    x1 = xMixScale(+from.attributes.x);
-                    y1 = yMixScale(+from.attributes.y);
-                    x2 = xMixScale(+to.attributes.x);
-                    y2 = yMixScale(+to.attributes.y);
+                    x1 = scaleNetworkXPosition(xMixScale(+from.attributes.x));
+                    y1 = scaleNetworkYPosition(yMixScale(+from.attributes.y));
+                    x2 = scaleNetworkXPosition(xMixScale(+to.attributes.x));
+                    y2 = scaleNetworkYPosition(yMixScale(+to.attributes.y));
                   }
                   return (
                     <g className={`edge ${attributes.type} ${isActive ? 'is-active' : ''}`}
@@ -258,17 +276,17 @@ const TweetsMap = ({
                     if (node.attributes.type === 'station') {
                       isActive = activeAnalysis.stations.has(node.attributes.label);
                       isActiveSecondary = !isActive && activeAnalysis.secondaryStations.has(node.attributes.label);
-                    }else if (node.attributes.type === 'twitter_user') {
+                    } else if (node.attributes.type === 'twitter_user') {
                       isActive = activeAnalysis.user_screen_names.has(node.attributes.label)
                     }
                   }
                   let [x, y] = projection([+node.attributes.lng, +node.attributes.lat]);
                   if (vizMode === 'networkSimple') {
-                    x = xClassicScale(+node.attributes.xAlt);
-                    y = yClassicScale(+node.attributes.yAlt);
+                    x = scaleNetworkXPosition(xClassicScale(+node.attributes.xAlt));
+                    y = scaleNetworkYPosition(yClassicScale(+node.attributes.yAlt));
                   } else if (vizMode === 'networkSpatialized') {
-                    x = xMixScale(+node.attributes.x);
-                    y = yMixScale(+node.attributes.y);
+                    x = scaleNetworkXPosition(xMixScale(+node.attributes.x));
+                    y = scaleNetworkYPosition(yMixScale(+node.attributes.y));
                   }
                   const radius = tweetsDotsScale(+node.attributes.nbTweets)
                   return (
@@ -308,16 +326,16 @@ const TweetsMap = ({
           >
             {
               hoveredNodeTooltipData ?
-              <div 
-                className="tooltip"
-                style={{
-                  left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 5,
-                  top: hoveredNodeTooltipData.y - 10,
-                }}
-              >
-                {hoveredNodeTooltipData.content}
-              </div>
-              : null
+                <div
+                  className="tooltip"
+                  style={{
+                    left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 10,
+                    top: hoveredNodeTooltipData.y - 10,
+                  }}
+                >
+                  {hoveredNodeTooltipData.content}
+                </div>
+                : null
             }
           </div>
         </foreignObject>
@@ -388,7 +406,7 @@ const TweetsMap = ({
         >
           <div className="analysis-panel-header">
             <h3 className={`analysis-title ${activeAnalysis ? 'is-active' : ''}`}>
-              Analyses
+              {activeAnalysis ? activeAnalysis.titre : 'Analyses'}
             </h3>
             <button className="btn btn-toggle" onClick={() => {
               setAnalysisVisible(!analysisVisible);
@@ -396,7 +414,7 @@ const TweetsMap = ({
               //   setActiveAnalysis();
               // }
             }}>
-                {analysisVisible ? 'cacher' : 'montrer'}
+              {analysisVisible ? 'cacher' : 'montrer'}
             </button>
           </div>
           <div className="analysis-panel-body">
@@ -411,9 +429,9 @@ const TweetsMap = ({
                       } else {
                         setActiveAnalysis(analysis)
                       }
-                    }} 
-                    key={analysis.titre} 
-                    className={`analysis-item ${isActive ? 'is-active': ''}`}
+                    }}
+                      key={analysis.titre}
+                      className={`analysis-item ${isActive ? 'is-active' : ''}`}
                     >
                       <div className="analysis-item-header">
                         <h4>{analysis.titre}</h4>
@@ -437,6 +455,12 @@ const TweetsMap = ({
                       M0,4 l4,-4
                       M3,5 l2,-2"
           style={{ stroke: 'rgba(0,0,0,0.1)', opacity: 1, strokeWidth: 1 }} />
+      </pattern>
+      <pattern id={`diagonalHatchDense`} patternUnits="userSpaceOnUse" width="4" height="4">
+        <path d="M-1,1 l2,-2
+                      M0,4 l4,-4
+                      M3,5 l2,-2"
+          style={{ stroke: 'rgba(0,0,0,0.3)', opacity: 1, strokeWidth: 1 }} />
       </pattern>
 
     </svg>

@@ -26,6 +26,10 @@ placeholder.jpg| Mon titre 3 | Ma description
 
 export const menuData = [
   {
+    title: 'Accueil',
+    id: 'home'
+  },
+  {
     title: 'Les voyageurs',
     id: 'voyageurs'
   },

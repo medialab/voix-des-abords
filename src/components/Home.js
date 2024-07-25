@@ -4,9 +4,7 @@ import Md from 'react-markdown';
 import Measure from "react-measure";
 import { useState } from "react";
 
-const YTB_URL = 'https://www.youtube.com/watch?v=OiyM0WTa100';
-
-
+// const YTB_URL = 'https://www.youtube.com/watch?v=OiyM0WTa100';
 const Home = ({
   metadata,
   texts,
@@ -15,7 +13,7 @@ const Home = ({
   height,
 }) => {
   return (
-    <section className="Home">
+    <section className="Home" id="home">
       
       
       <div className="home-contents">
@@ -31,7 +29,7 @@ const Home = ({
         <div className="menu-container">
           <ul className="menu">
             {
-              menuData.map(({ id, title }) => {
+              menuData.slice(1).map(({ id, title }) => {
                 return (
                   <li key={id}>
                     <Link

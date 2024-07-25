@@ -197,6 +197,7 @@ const Philippe = ({
         if (c.durationInSeconds){
           return currentVideoTime >= c.timecodeInSeconds && currentVideoTime <= c.timecodeInSeconds + c.durationInSeconds;
         } 
+        return false;
     });
     }
   }, [currentVideoTime, activeBalade]);

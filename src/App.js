@@ -87,7 +87,9 @@ function App() {
           }
         />
         {
-          menuData.map(({ title, id }) => {
+          menuData
+          .slice(1)
+          .map(({ title, id }) => {
             switch (id) {
               case 'philippe':
                 return (
