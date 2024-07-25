@@ -178,6 +178,15 @@ const Philippe = ({
     }
   }, [data, activeBalade]);
 
+  const currentAudioCapsule = useMemo(() => {
+    if (activeBalade) {
+      return activeBalade.capsules.find(c => {
+        if (c.durationInSeconds){
+          return currentVideoTime >= c.timecodeInSeconds && currentVideoTime <= c.timecodeInSeconds + c.durationInSeconds;
+        } 
+    });
+    }
+  }, [currentVideoTime, activeBalade])
 
   const onVideoProgress = ({ playedSeconds, played }) => {
     setCurrentVideoTime(playedSeconds);
@@ -242,23 +251,40 @@ const Philippe = ({
                   data.map(datum => {
                     const isActive = activeBalade && datum.id === activeBalade.id;
                     return (
-                      <g className={`path-group ${isActive ? 'is-active' : ''}`} key={datum.id}>
+                      <g className={`path-group ${isActive ? 'is-active' : ''}`} key={datum.id} 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveBalade(datum)
+                      }}>
                         {
                           datum.geometry.features.map((feature, featureIndex) => {
                             const d = project(feature);
                             return (
+                              <g>
                               <path
                                 key={featureIndex}
                                 d={d}
                                 className="background-path"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveBalade(datum)
-                                }}
+                                
                               />
+                              </g>
                             )
                           })
                         }
+                        <circle
+                          cx={projection(datum.geometry.features[0].geometry.coordinates[0])[0]}
+                          cy={projection(datum.geometry.features[0].geometry.coordinates[0])[1]}
+                          r={10}
+                          stroke={isActive ? 'red' : "none"}
+                          fill={isActive ? 'none' : "red"}
+                        />
+                        <text 
+                          textAnchor="middle"
+                          x={projection(datum.geometry.features[0].geometry.coordinates[0])[0]}
+                          y={projection(datum.geometry.features[0].geometry.coordinates[0])[1] + 4}
+                          fill={isActive ? 'red' : 'white'}
+                          fontSize={10}
+                        >▶</text>
                       </g>
                     )
                   })
@@ -327,6 +353,46 @@ const Philippe = ({
                   />
                 </div>
               </foreignObject>
+              {
+                currentAudioCapsule ?
+                <foreignObject
+                className="audio-wrapper"
+                x={width - videoWidth}
+                y={videoHeight + timelineHeight + 20}
+                width={videoWidth}
+                height={videoHeight / 5}
+              >
+                <div xmlns="http://www.w3.org/1999/xhtml"
+                  className={`audio-container`}
+                  onClick={() => {
+                    // setIsPlaying(!isPlaying)
+                  }}
+                >
+                  <ReactPlayer
+                    width={videoWidth}
+                    height={videoHeight / 5}
+                    url={currentAudioCapsule.url}
+                    url={'https://soundcloud.com/yungeenace/game-over?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'}
+                    // onProgress={onVideoProgress}
+                    // ref={playerRef}
+                    // playing={isPlaying}
+                    // onPlay={() => {
+                    //   // if (!isPlaying) {
+                    //   //   setIsPlaying(true)
+                    //   // }
+                    // }}
+                    // onPause={() => {
+                    //   // if (isPlaying) {
+                    //   //   setIsPlaying(false)
+                    //   // }
+                    // }}
+                  />
+                </div>
+              </foreignObject>
+                : null
+              }
+              
+
 
               <g className="timeline-container">
                 <rect className="timeline-background"
