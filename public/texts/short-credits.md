@@ -1,3 +1,3 @@
 - Investigatrice principale : Marie Boishus
 - Accompagnement : Robin de Mourat
-- Milieux de support : équipe technique, équipe design, atelier des milieux
+- Milieux de la recherche : équipe *design*, équipe *méthodes numériques* et *atelier des milieux* du médialab de Sciences Po ; RER C & B
