@@ -88,10 +88,12 @@ main .section {
 
   .drawer-button {
     position: fixed;
-    left: 1rem;
-    top: 1rem;
+    left: 0.5rem;
+    top: 0.5rem;
     cursor: pointer;
     pointer-events: all;
+    font-size: 2rem;
+    transition: 0.5s ease all;
   }
 
   &.is-open {
@@ -102,6 +104,10 @@ main .section {
     }
     .drawer-menu {
       left: 0;
+    }
+    .drawer-button {
+      font-size: 1.5rem;
+      color: black;
     }
   }
 }
@@ -167,6 +173,75 @@ main .section {
   }
 }
 
+.Home,
+.HomeContainer {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // .video-container {
+  //   // pointer-events: none;
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: -1;
+  //   opacity: .1;
+  // }
+  .home-contents {
+    max-width: 1000px;
+    width: 1000px;
+    padding: 2rem;
+    // background: rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  .home-title {
+    font-size: 3rem;
+    margin: 0;
+  }
+  .home-subtitle {
+    font-size: 2rem;
+    margin: 0;
+  }
+  .home-main-credits {
+    margin: 0;
+  }
+  .short-credits {
+  }
+  .abstract {
+  }
+  .menu-container {
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(100px, auto);
+      li {
+        display: flex;
+        justify-content: stretch;
+        .section-link {
+          background: rgba(0, 0, 0, 0.2);
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: 0.5s ease all;
+          &:hover {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
 .section.voyageurs {
   $part-height: calc(100vh - 3rem);
   display: flex;
@@ -205,8 +280,8 @@ main .section {
   //   }
   // }
   .reseau-ferre {
-    path{
-      opacity: .1;
+    path {
+      opacity: 0.1;
     }
   }
 
@@ -518,7 +593,7 @@ main .section {
         max-width: 5rem;
       }
       &:not(:last-of-type) {
-        margin-right: .5rem;
+        margin-right: 0.5rem;
       }
     }
   }
@@ -541,17 +616,15 @@ main .section {
   &.cadastre {
     path {
       stroke: grey;
-      opacity: .1;
+      opacity: 0.1;
       fill: transparent;
     }
   }
-  
 }
 
 .Philippe-container {
   max-height: 100vh;
   .philippe {
-    
     .paths-container {
       .path-group {
         cursor: pointer;
@@ -561,9 +634,50 @@ main .section {
         }
         &.is-active {
           .background-path {
-            stroke: red;
+            stroke: black;
             stroke-width: 3px;
           }
+        }
+      }
+    }
+
+    .Capsule {
+      .capsule-tooltip-wrapper {
+        pointer-events: none;
+        transition: 0.5s ease all;
+        opacity: 0;
+
+        .capsule-tooltip-container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: flex-end;
+          justify-content: center;
+          > div {
+            background: black;
+            color: white;
+            padding: 0.5rem;
+            font-size: 12px;
+          }
+        }
+      }
+
+      .background-circle {
+        stroke: white;
+        transition: .5s ease all;
+      }
+      .evenement {
+        fill: black;
+      }
+      .son_oiseau {
+        fill: blue;
+      }
+      .capsule {
+      }
+      &:hover,&.is-active {
+        .capsule-tooltip-wrapper {
+          opacity: 1;
         }
       }
     }
@@ -576,7 +690,8 @@ main .section {
       }
       .timeline-marker {
         pointer-events: none;
-        fill: red;
+        fill: black;
+        fill-opacity: .8;
         stroke: none;
       }
     }
