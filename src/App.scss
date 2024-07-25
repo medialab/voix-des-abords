@@ -598,6 +598,7 @@ main .section {
     img {
       max-height: 100%;
       height: 100%;
+      max-width: 100%;
     }
     figcaption {
       display: flex;
@@ -691,7 +692,7 @@ main .section {
           align-items: flex-end;
           justify-content: center;
           > div {
-            background: black;
+            background: rgba(0,0,0,0.6);
             color: white;
             padding: 0.5rem;
             font-size: 12px;

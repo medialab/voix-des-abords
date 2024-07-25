@@ -7,7 +7,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { lineString, along, length } from "@turf/turf";
 
 
-const TOOLTIP_VISIBILITY_IN_SECONDS = 20;
+const TOOLTIP_VISIBILITY_IN_SECONDS = 5;
 const Capsule = ({
   isActive,
   parentIsActive,
@@ -383,7 +383,7 @@ const Philippe = ({
                 <div xmlns="http://www.w3.org/1999/xhtml"
                   className={`audio-container`}
                   onClick={() => {
-                    // setIsPlaying(!isPlaying)
+                    setAudioIsPlaying(!audioIsPlaying)
                   }}
                 >
                   <ReactPlayer
