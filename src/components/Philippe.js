@@ -20,16 +20,16 @@ const Capsule = ({
   screenWidth,
 }) => {
   let color = 'red';
-  let radius = 2;
+  let radius = 3;
   switch (type) {
     case 'evenement':
       color = 'green';
       break;
     case 'son_oiseau':
-      color = 'blue';
+      color = 'darkgreen';
       break;
     case 'capsule':
-      radius = 5;
+      radius = 6;
       color= 'rgba(100,100,100,1)';
       break;
     default:
@@ -314,6 +314,7 @@ const Philippe = ({
                 cy={projection(baladeCoordinates)[1]}
                 r={10}
                 fill="black"
+                fillOpacity={.7}
                 stroke="white"
               />
               <g className="spatialized-capsules-container">
