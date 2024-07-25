@@ -4,7 +4,9 @@ import Markdown from "react-markdown";
 import Measure from 'react-measure';
 import ReactPlayer from "react-player";
 import { geoMercator, geoPath } from "d3-geo";
-import { lineString, along, length } from "@turf/turf";
+import {along} from '@turf/along';
+import {length} from '@turf/length';
+import { lineString } from "@turf/turf";
 
 
 const TOOLTIP_VISIBILITY_IN_SECONDS = 5;

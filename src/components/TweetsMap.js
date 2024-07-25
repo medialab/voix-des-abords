@@ -44,8 +44,10 @@ const TweetsMap = ({
     }
   }, [data]);
   const scaleBarWidth = 50;
-  const mapScaleExtent = useMemo(() => [5000, 40000], []);
-  const [currentScale, setCurrentScale] = useState(15000);
+  // const mapScaleExtent = useMemo(() => [5000, 40000], []);
+  const mapScaleExtent = useMemo(() => [10000, 80000], []);
+  // const [currentScale, setCurrentScale] = useState(15000);
+  const [currentScale, setCurrentScale] = useState(22000);
   const [analysisVisible, setAnalysisVisible] = useState(false);
   const [hoveredNode, setHoveredNode] = useState();
   const [vizMode, setVizMode] = useState('map');
@@ -105,7 +107,7 @@ const TweetsMap = ({
     const max = width * height * currentScale * 0.0000000004;
     const tweetsDotsExtent = [max * .1, max];
     // const margin = 10;
-    const xRangeExtent = [width / 5, width - width/5]
+    const xRangeExtent = [width / 4, width - width/4]
     const yRangeExtent = [height, 0];
     return {
       xClassicScale: scaleLinear().range(xRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.xAlt))),
@@ -119,16 +121,16 @@ const TweetsMap = ({
   const project = geoPath().projection(projection);
 
   const scaleNetworkXPosition = useMemo(() => (x) => {
-    const scaleRatio = (currentScale / 10000);
+    const scaleRatio = (currentScale / 24000);
     const scaledCenter = (width / 2) * scaleRatio;
-    return x * scaleRatio - (scaledCenter - width / 2);
+    return x * scaleRatio - (scaledCenter - width / 2) - width / 12;
 
   }, [currentScale, width]);
   const scaleNetworkYPosition = useMemo(() => (y) => {
-    const scaleRatio = (currentScale / 10000);
+    const scaleRatio = (currentScale / 24000);
     const scaledCenter = (height / 2) * scaleRatio;
-    return y * scaleRatio - (scaledCenter - height / 2);
-  }, [currentScale, height]);
+    return y * scaleRatio - (scaledCenter - height / 2) - width / 20;
+  }, [currentScale, height, width]);
 
   const hoveredNodeTooltipData = useMemo(() => {
     if (hoveredNode) {
