@@ -95,6 +95,7 @@ const Philippe = ({
 }) => {
   const playerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [audioIsPlaying, setAudioIsPlaying] = useState(false);
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
   const [baladeCoordinates, setBaladeCoordinates] = useState([0, 0]);
   const [textHeight, setTextHeight] = useState(0);
@@ -198,7 +199,11 @@ const Philippe = ({
         } 
     });
     }
-  }, [currentVideoTime, activeBalade])
+  }, [currentVideoTime, activeBalade]);
+
+  useEffect(() => {
+    setAudioIsPlaying(false);
+  }, [setAudioIsPlaying, currentAudioCapsule])
 
   const onVideoProgress = ({ playedSeconds, played }) => {
     setCurrentVideoTime(playedSeconds);
@@ -362,6 +367,7 @@ const Philippe = ({
                       //   setIsPlaying(false)
                       // }
                     }}
+                    
                   />
                 </div>
               </foreignObject>
@@ -384,7 +390,12 @@ const Philippe = ({
                     width={videoWidth}
                     height={videoHeight / 5}
                     url={currentAudioCapsule.url}
-                    url={'https://soundcloud.com/yungeenace/game-over?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'}
+                    playing={audioIsPlaying}
+                    onReady={() => {
+                      console.log('audio ready');
+                      setAudioIsPlaying(true);
+                    }}
+                    // url={'https://soundcloud.com/yungeenace/game-over?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'}
                     // onProgress={onVideoProgress}
                     // ref={playerRef}
                     // playing={isPlaying}
@@ -419,7 +430,7 @@ const Philippe = ({
                     const shareX = relX / barWidth;
                     const targetInSeconds = shareX * activeBalade.durationInSeconds;
                     // console.log('seek to', relX, barWidth)
-                    setIsPlaying(false);
+                    // setIsPlaying(false);
                     if (playerRef.current) {
                       playerRef.current.seekTo(targetInSeconds);
                     }
