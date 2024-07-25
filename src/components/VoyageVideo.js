@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player';
 import Measure from 'react-measure';
 import { TypeAnimation } from 'react-type-animation';
 import Md from 'react-markdown';
+import { shuffle } from 'd3-array';
 
 const timecodeToSeconds = str => {
   const parts = str.split(':').map(n => +n);
@@ -58,7 +59,7 @@ const VoyageVideo = ({
           fromTimecode: datum['timecode-arret'],
           toTimecode: datum['timecode-depart'],
           type: 'stop',
-          tweets: theseTweets,
+          tweets: shuffle(theseTweets),
         }
       });
       return stops.reduce((res, stop, index) => {
