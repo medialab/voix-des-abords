@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
 $rerc-color: #ffcf01;
 
 html {
   scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
+}
+body {
+  font-family: "Karla", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .btn {
