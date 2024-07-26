@@ -345,9 +345,16 @@ main .section {
         stroke-width: 2px;
         stroke-opacity: 0.5;
       }
+      &.is-hidden {
+        opacity: 0;
+      }
+      &.is-related {
+        opacity: .7;
+      }
       &.is-active {
         stroke: red;
       }
+      
     }
   }
   .nodes {
@@ -357,7 +364,6 @@ main .section {
       circle {
         stroke: white;
         opacity: 1;
-        cursor: pointer;
         transition: 0.5s ease all;
       }
 
@@ -383,6 +389,13 @@ main .section {
           fill: red;
         }
       }
+      &.is-hidden {
+        opacity: 0;
+      }
+      &.is-related {
+        opacity: .7;
+      }
+      
     }
   }
 
@@ -404,9 +417,43 @@ main .section {
         background: black;
         color: white;
         padding: 0.2rem;
-        font-size: 1rem;
+        font-size: .6rem;
         position: absolute;
+        .tooltip-content {
+          padding: 1rem;
+          h5 {
+            margin: 0;
+            font-size: .8rem;
+          }
+        }
       }
+    }
+  }
+}
+
+.hovered-tweets-wrapper {
+  pointer-events: none;
+  .hovered-tweets-container {
+    padding: 1rem;
+    opacity: 0;
+    transition: .5s ease all;
+    width: 30%;
+    .HoveredTweets {
+      opacity: 0;
+      transition: .5s ease all;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 1rem;
+      p {
+        margin: 0;
+      }
+      &.is-displaying {
+        opacity: 1;
+      }
+    }
+
+    &.is-active {
+      opacity: 1;
     }
   }
 }

@@ -295,14 +295,14 @@ const Philippe = ({
                           cx={projection(datum.geometry.features[0].geometry.coordinates[0])[0]}
                           cy={projection(datum.geometry.features[0].geometry.coordinates[0])[1]}
                           r={10}
-                          stroke={isActive ? 'red' : "none"}
-                          fill={isActive ? 'none' : "red"}
+                          stroke={!isActive ? 'red' : "none"}
+                          fill={!isActive ? 'none' : "red"}
                         />
                         <text 
                           textAnchor="middle"
                           x={projection(datum.geometry.features[0].geometry.coordinates[0])[0]}
                           y={projection(datum.geometry.features[0].geometry.coordinates[0])[1] + 4}
-                          fill={isActive ? 'red' : 'white'}
+                          fill={!isActive ? 'red' : 'white'}
                           fontSize={10}
                         >▶</text>
                       </g>

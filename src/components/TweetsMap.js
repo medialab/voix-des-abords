@@ -7,6 +7,7 @@ import { useMemo, useState } from 'react';
 import Markdown from 'react-markdown';
 import Measure from 'react-measure';
 import { Group, Line, Path } from './AnimatedComponents';
+import HoveredTweets from './HoveredTweets';
 
 const visualizationLabels = {
   map: 'la géographie',
@@ -19,18 +20,26 @@ const TweetsMap = ({
   width = 500,
   height = 500
 }) => {
-  const { networkData } = useMemo(() => {
+  const { networkData, tweetsMap } = useMemo(() => {
     if (!data) {
       return {}
     }
     const netData = data['twitter_and_stations_network.json'];
+    const tweetsData = data['tweets.csv'];
+    const tweetsMap = new Map();
+    tweetsData.forEach(tweet => {
+      tweetsMap.set(tweet.id, tweet);
+    })
     const nodesMap = new Map();
     netData.nodes.forEach(node => {
-      nodesMap.set(node.key, node)
+      nodesMap.set(node.key, node);
+      node.relatedNodes = new Set();
     })
     netData.edges = netData.edges.map(edge => {
       const from = nodesMap.get(edge.source);
       const to = nodesMap.get(edge.target);
+      from.relatedNodes.add(to);
+      to.relatedNodes.add(from);
       return {
         ...edge,
         from,
@@ -39,6 +48,7 @@ const TweetsMap = ({
     })
     return {
       networkData: netData,
+      tweetsMap,
       // stationsNodes,
       // linesEdges: netData.edges.filter(e => e.attributes.type === 'segment')
     }
@@ -144,16 +154,33 @@ const TweetsMap = ({
         y = scaleNetworkYPosition(yMixScale(+node.attributes.y));
       }
       const radius = tweetsDotsScale(+node.attributes.nbTweets);
+      const relatedUsers = Array.from(node.relatedNodes).filter(n => n.attributes.type === 'twitter_user' && n.attributes.label !== node.attributes.label);
+      const relatedStations = Array.from(node.relatedNodes).filter(n => n.attributes.type === 'station' && n.attributes.label !== node.attributes.label);
+      const content = (
+        <div className="tooltip-content">
+          <h5>{node.attributes.label} ({node.attributes.type === 'station' ? 'station' : 'utilisateur twitter'} - {node.attributes.nbTweets} tweet{node.attributes.nbTweets.length > 1 ? 's' : ''})</h5>
+          {relatedUsers.length ? <div>{node.attributes.type === 'station' ? 'Sujet des tweets de : ' : 'Interagit avec les utilisateurs : '}{relatedUsers
+          .sort((a, b) => {
+            if (+a.attributes.nbTweets > b.attributes.nbTweets) {
+              return -1;
+            }
+            return 1;
+          })
+          .map(n => `${n.attributes.label} (${n.attributes.nbTweets} t)`).join(', ')}</div> : null}
+          {relatedStations.length && node.attributes.type === 'twitter_user' ? <div>Tweete à propos des stations : {relatedStations.map(d => d.attributes.label).join(', ')}</div> : null}
+        </div>
+      )
       return {
         node,
         x,
         y,
         radius,
-        content: `${node.attributes.label} (${node.attributes.type === 'station' ? 'station' : 'utilisateur twitter'} - ${node.attributes.nbTweets} tweets)`
+        content,
+        relatedNodesKeys: new Set(Array.from(node.relatedNodes).map(n => n.key)),
+        tweets: (node.attributes.tweets || []).map(id => tweetsMap.get(id))
       }
     }
-  }, [hoveredNode, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale, scaleNetworkXPosition, scaleNetworkYPosition]);
-
+  }, [hoveredNode, tweetsMap, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale, scaleNetworkXPosition, scaleNetworkYPosition]);
 
   return !(departements) ? 'chargement' : (
     <svg width={width} height={height} className="TweetsMap">
@@ -241,8 +268,10 @@ const TweetsMap = ({
                     x2 = scaleNetworkXPosition(xMixScale(+to.attributes.x));
                     y2 = scaleNetworkYPosition(yMixScale(+to.attributes.y));
                   }
+                  const isRelated = !activeAnalysis && hoveredNode && (hoveredNodeTooltipData.relatedNodesKeys.has(from.key) || hoveredNodeTooltipData.relatedNodesKeys.has(to.key));
+                  const isHidden = !activeAnalysis && hoveredNode && !isRelated;
                   return (
-                    <g className={`edge ${attributes.type} ${isActive ? 'is-active' : ''}`}
+                    <g className={`edge ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden': ''} ${attributes.type} ${isActive ? 'is-active' : ''}`}
                       key={key}
                     >
                       <Line
@@ -274,6 +303,7 @@ const TweetsMap = ({
                 .map(node => {
                   let isActive = false;
                   let isActiveSecondary = false;
+
                   if (activeAnalysis) {
                     if (node.attributes.type === 'station') {
                       isActive = activeAnalysis.stations.has(node.attributes.label);
@@ -282,6 +312,9 @@ const TweetsMap = ({
                       isActive = activeAnalysis.user_screen_names.has(node.attributes.label)
                     }
                   }
+                  const isHovered = !isActive && !isActiveSecondary && hoveredNode && hoveredNode.key === node.key;
+                  const isRelated = !isActive && !isActiveSecondary && hoveredNode && hoveredNodeTooltipData.relatedNodesKeys.has(node.key);
+                  const isHidden = hoveredNode && (!isActive && !isActiveSecondary && !isHovered && !isRelated);
                   let [x, y] = projection([+node.attributes.lng, +node.attributes.lat]);
                   if (vizMode === 'networkSimple') {
                     x = scaleNetworkXPosition(xClassicScale(+node.attributes.xAlt));
@@ -292,7 +325,7 @@ const TweetsMap = ({
                   }
                   const radius = tweetsDotsScale(+node.attributes.nbTweets)
                   return (
-                    <Group className={`node ${node.attributes.type} ${isActive ? 'is-active' : ''} ${isActiveSecondary ? 'is-active-secondary' : ''}`}
+                    <Group className={`node ${node.attributes.type} ${isHovered ? 'is-hovered' : ''} ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden': ''} ${isActive ? 'is-active' : ''} ${isActiveSecondary ? 'is-active-secondary' : ''}`}
                       key={node.attributes.nom}
                       transform={`translate(${x}, ${y})`}
                     >
@@ -392,6 +425,21 @@ const TweetsMap = ({
               </div>
             </div>
           </div>
+        </div>
+      </foreignObject>
+
+      <foreignObject
+        className="hovered-tweets-wrapper"
+        x={0}
+        y={0}
+        width={width}
+        height={height}
+      >
+        <div
+          xmlns="http://www.w3.org/1999/xhtml"
+          className={`hovered-tweets-container ${hoveredNodeTooltipData ? 'is-active' : ''}`}
+        >
+          <HoveredTweets {...(hoveredNodeTooltipData || {})} />
         </div>
       </foreignObject>
 
