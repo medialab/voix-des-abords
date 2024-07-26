@@ -27,7 +27,7 @@ const VoyageVideo = ({
   const tweetsPresenceRatioBarWidth = 50;
 
   const playerRef = useRef(null);
-  const [textHeight, setTextHeight] = useState(0);
+  // const [textHeight, setTextHeight] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [currentSegment, setCurrentSegment] = useState();
@@ -36,7 +36,7 @@ const VoyageVideo = ({
 
   const [tweetsPresenceRatio, setTweetsPresenceRatio] = useState(0.5);
 
-  const videoHeight = height - timelineHeight - uiHeight - textHeight;
+  const videoHeight = height - timelineHeight - uiHeight; // - textHeight;
 
   const [tooltipX, setTooltipX] = useState(0);
   const timecodeScale = useMemo(() => scaleLinear().domain([0, totalDuration]).range([margin, width - margin * 2]), [width])
@@ -121,19 +121,6 @@ const VoyageVideo = ({
   }
   return (
     <div className="VoyageVideo">
-      <Measure
-      bounds
-      onResize={contentRect => {
-        setTextHeight(contentRect.bounds.height)
-      }}
-    >
-      {({ measureRef }) => (
-        <div ref={measureRef} className="text-container">
-          <Md>{text}</Md>
-        </div>
-      )}
-    </Measure>
-      
       <ReactPlayer
         width={width}
         height={videoHeight}
@@ -155,7 +142,8 @@ const VoyageVideo = ({
       <div 
         className="tweets-overlay-container"
         style={{
-          top: textHeight,
+          // top: textHeight,
+          top: 0,
           width,
           height: videoHeight,
           opacity: tweetsPresenceRatio
@@ -350,6 +338,11 @@ const VoyageVideo = ({
 const VoyageVideoContainer = (props) => {
   const [dimensions, setDimensions] = useState({})
   return (
+    <>
+    <div  className="text-container">
+          <Md>{props.text}</Md>
+        </div>
+    
     <Measure
       bounds
       onResize={contentRect => {
@@ -362,6 +355,7 @@ const VoyageVideoContainer = (props) => {
         </div>
       )}
     </Measure>
+    </>
   )
 };
 
