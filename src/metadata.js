@@ -6,7 +6,7 @@ export const metadata = {
 
 export const images = {
   'renouees': `
-courbe hype renouée.jpg| Courbe des hauts et des bas où je crois puis je ne crois plus que travailler sur les Renouées soit pertinent | Ma description
+courbe hype renouée.jpg| Courbe des hauts et des bas où je crois puis je ne crois plus que travailler sur les Renouées soit pertinent
 placeholder.jpg| Mon titre 2 | Ma description
 `,
   'sncf': `
