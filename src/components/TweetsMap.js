@@ -349,31 +349,7 @@ const TweetsMap = ({
               : null
           }
         </g>
-        <foreignObject
-          className="tooltip-element-wrapper"
-          x={0}
-          y={0}
-          width={width}
-          height={height}
-        >
-          <div xmlns="http://www.w3.org/1999/xhtml"
-            className={`tooltip-element-container ${hoveredNodeTooltipData ? 'has-contents' : ''}`}
-          >
-            {
-              hoveredNodeTooltipData ?
-                <div
-                  className="tooltip"
-                  style={{
-                    left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 10,
-                    top: hoveredNodeTooltipData.y - 10,
-                  }}
-                >
-                  {hoveredNodeTooltipData.content}
-                </div>
-                : null
-            }
-          </div>
-        </foreignObject>
+        
       </g>
       <foreignObject
         className="ui-wrapper"
@@ -455,7 +431,13 @@ const TweetsMap = ({
           className={`analysis-panel-container ${analysisVisible ? 'is-open' : ''}`}
         >
           <div className="analysis-panel-header">
-            <h3 className={`analysis-title ${activeAnalysis ? 'is-active' : ''}`}>
+            <h3 onClick={() => {
+              if (activeAnalysis) {
+                setActiveAnalysis();
+              } else if (!analysisVisible) {
+                setAnalysisVisible(true);
+              }
+            }} className={`analysis-title ${activeAnalysis ? 'is-active' : ''}`}>
               {activeAnalysis ? activeAnalysis.titre : 'Analyses'}
             </h3>
             <button className="btn btn-toggle" onClick={() => {
@@ -499,6 +481,32 @@ const TweetsMap = ({
           </div>
         </div>
       </foreignObject>
+
+      <foreignObject
+          className="tooltip-element-wrapper"
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+        >
+          <div xmlns="http://www.w3.org/1999/xhtml"
+            className={`tooltip-element-container ${hoveredNodeTooltipData ? 'has-contents' : ''}`}
+          >
+            {
+              hoveredNodeTooltipData ?
+                <div
+                  className="tooltip"
+                  style={{
+                    left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 10,
+                    top: hoveredNodeTooltipData.y - 10,
+                  }}
+                >
+                  {hoveredNodeTooltipData.content}
+                </div>
+                : null
+            }
+          </div>
+        </foreignObject>
 
       <pattern id={`diagonalHatch`} patternUnits="userSpaceOnUse" width="4" height="4">
         <path d="M-1,1 l2,-2
