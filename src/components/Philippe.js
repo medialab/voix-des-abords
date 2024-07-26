@@ -4,8 +4,8 @@ import Markdown from "react-markdown";
 import Measure from 'react-measure';
 import ReactPlayer from "react-player";
 import { geoMercator, geoPath } from "d3-geo";
-import {along} from '@turf/along';
-import {length} from '@turf/length';
+import { along } from '@turf/along';
+import { length } from '@turf/length';
 import { lineString } from "@turf/turf";
 
 
@@ -32,7 +32,7 @@ const Capsule = ({
       break;
     case 'capsule':
       radius = 6;
-      color= 'rgba(100,100,100,1)';
+      color = 'rgba(100,100,100,1)';
       break;
     default:
       break;
@@ -51,7 +51,7 @@ const Capsule = ({
     <g className={`Capsule ${type} ${isActive ? 'is-active' : ''}`}>
       <foreignObject
         className="capsule-tooltip-wrapper"
-        x={-tooltipContainerWidth/2}
+        x={-tooltipContainerWidth / 2}
         width={tooltipContainerWidth}
         y={-tooltipContainerHeight - 10}
         height={tooltipContainerHeight}
@@ -72,15 +72,15 @@ const Capsule = ({
       />
       {
         type === 'capsule' ?
-        <text 
-          textAnchor="middle"
-          x={0}
-          y={radius / 3}
-          fill={isActive ? 'white' : 'none'}
-          stroke={isActive ? 'none' : 'white'}
-          fontSize={isActive ? 7 : 4}
-        >▶</text>
-        : null
+          <text
+            textAnchor="middle"
+            x={0}
+            y={radius / 3}
+            fill={isActive ? 'white' : 'none'}
+            stroke={isActive ? 'none' : 'white'}
+            fontSize={isActive ? 7 : 4}
+          >▶</text>
+          : null
       }
     </g>
 
@@ -196,11 +196,11 @@ const Philippe = ({
   const currentAudioCapsule = useMemo(() => {
     if (activeBalade) {
       return activeBalade.capsules.find(c => {
-        if (c.durationInSeconds){
+        if (c.durationInSeconds) {
           return currentVideoTime >= c.timecodeInSeconds && currentVideoTime <= c.timecodeInSeconds + c.durationInSeconds;
-        } 
+        }
         return false;
-    });
+      });
     }
   }, [currentVideoTime, activeBalade]);
 
@@ -271,22 +271,22 @@ const Philippe = ({
                   data.map(datum => {
                     const isActive = activeBalade && datum.id === activeBalade.id;
                     return (
-                      <g className={`path-group ${isActive ? 'is-active' : ''}`} key={datum.id} 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveBalade(datum)
-                      }}>
+                      <g className={`path-group ${isActive ? 'is-active' : ''}`} key={datum.id}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveBalade(datum)
+                        }}>
                         {
                           datum.geometry.features.map((feature, featureIndex) => {
                             const d = project(feature);
                             return (
                               <g>
-                              <path
-                                key={featureIndex}
-                                d={d}
-                                className="background-path"
-                                
-                              />
+                                <path
+                                  key={featureIndex}
+                                  d={d}
+                                  className="background-path"
+
+                                />
                               </g>
                             )
                           })
@@ -298,7 +298,7 @@ const Philippe = ({
                           stroke={!isActive ? 'red' : "none"}
                           fill={!isActive ? 'none' : "red"}
                         />
-                        <text 
+                        <text
                           textAnchor="middle"
                           x={projection(datum.geometry.features[0].geometry.coordinates[0])[0]}
                           y={projection(datum.geometry.features[0].geometry.coordinates[0])[1] + 4}
@@ -314,10 +314,10 @@ const Philippe = ({
                 className="video-position"
                 cx={projection(baladeCoordinates)[0]}
                 cy={projection(baladeCoordinates)[1]}
-                r={10}
-                fill="black"
-                fillOpacity={.7}
-                stroke="white"
+                r={width * .015}
+                fill="url(#head-gradient)"
+                // fillOpacity={.7}
+                stroke="none"
               />
               <g className="spatialized-capsules-container">
                 {
@@ -340,7 +340,7 @@ const Philippe = ({
                 }
               </g>
 
-              
+
               <foreignObject
                 className="video-wrapper"
                 x={width - videoWidth}
@@ -371,54 +371,54 @@ const Philippe = ({
                       //   setIsPlaying(false)
                       // }
                     }}
-                    
+
                   />
                 </div>
               </foreignObject>
               {
                 currentAudioCapsule ?
-                <foreignObject
-                className="audio-wrapper"
-                x={width - videoWidth}
-                y={videoHeight + timelineHeight + 20}
-                width={videoWidth}
-                height={videoHeight / 5}
-              >
-                <div xmlns="http://www.w3.org/1999/xhtml"
-                  className={`audio-container`}
-                  onClick={() => {
-                    setAudioIsPlaying(!audioIsPlaying)
-                  }}
-                >
-                  <ReactPlayer
+                  <foreignObject
+                    className="audio-wrapper"
+                    x={width - videoWidth}
+                    y={videoHeight + timelineHeight + 20}
                     width={videoWidth}
                     height={videoHeight / 5}
-                    url={currentAudioCapsule.url}
-                    playing={audioIsPlaying}
-                    onReady={() => {
-                      console.log('audio ready');
-                      setAudioIsPlaying(true);
-                    }}
-                    // url={'https://soundcloud.com/yungeenace/game-over?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'}
-                    // onProgress={onVideoProgress}
-                    // ref={playerRef}
-                    // playing={isPlaying}
-                    // onPlay={() => {
-                    //   // if (!isPlaying) {
-                    //   //   setIsPlaying(true)
-                    //   // }
-                    // }}
-                    // onPause={() => {
-                    //   // if (isPlaying) {
-                    //   //   setIsPlaying(false)
-                    //   // }
-                    // }}
-                  />
-                </div>
-              </foreignObject>
-                : null
+                  >
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                      className={`audio-container`}
+                      onClick={() => {
+                        setAudioIsPlaying(!audioIsPlaying)
+                      }}
+                    >
+                      <ReactPlayer
+                        width={videoWidth}
+                        height={videoHeight / 5}
+                        url={currentAudioCapsule.url}
+                        playing={audioIsPlaying}
+                        onReady={() => {
+                          console.log('audio ready');
+                          setAudioIsPlaying(true);
+                        }}
+                      // url={'https://soundcloud.com/yungeenace/game-over?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing'}
+                      // onProgress={onVideoProgress}
+                      // ref={playerRef}
+                      // playing={isPlaying}
+                      // onPlay={() => {
+                      //   // if (!isPlaying) {
+                      //   //   setIsPlaying(true)
+                      //   // }
+                      // }}
+                      // onPause={() => {
+                      //   // if (isPlaying) {
+                      //   //   setIsPlaying(false)
+                      //   // }
+                      // }}
+                      />
+                    </div>
+                  </foreignObject>
+                  : null
               }
-              
+
 
 
               <g className="timeline-container">
@@ -464,16 +464,16 @@ const Philippe = ({
                       <g className="capsule-container linear-capsule-container" onClick={handleClick} key={capsuleIndex} transform={`translate(${x}, ${videoHeight + 10})`}>
                         {
                           x2 ?
-                          <rect
-                            stroke="white"
-                            fill="url(#diagonalHatchWhite)"
-                            style={{pointerEvents: 'none'}}
-                            x={0}
-                            width={x2 - x}
-                            y={0}
-                            height={timelineHeight}
-                          />
-                          : null
+                            <rect
+                              stroke="white"
+                              fill="url(#diagonalHatchWhite)"
+                              style={{ pointerEvents: 'none' }}
+                              x={0}
+                              width={x2 - x}
+                              y={0}
+                              height={timelineHeight}
+                            />
+                            : null
                         }
                         <line
                           stroke="white"
@@ -482,7 +482,7 @@ const Philippe = ({
                           y1={0}
                           y2={timelineHeight}
                         />
-                        
+
                         <Capsule {...capsule} isActive={isActive} currentVideoTime={currentVideoTime} screenWidth={width} />
                       </g>
                     )
@@ -493,11 +493,18 @@ const Philippe = ({
             : null
         }
         <pattern id={`diagonalHatchWhite`} patternUnits="userSpaceOnUse" width="4" height="4">
-        <path d="M-1,1 l2,-2
+          <path d="M-1,1 l2,-2
                       M0,4 l4,-4
                       M3,5 l2,-2"
-          style={{ stroke: 'white', opacity: 1, strokeWidth: 1 }} />
-      </pattern>
+            style={{ stroke: 'white', opacity: 1, strokeWidth: 1 }} />
+        </pattern>
+        <defs>
+          <radialGradient id="head-gradient">
+            <stop offset="0%" stop-color="black" stop-opacity="100%" />
+            <stop offset="100%" stop-color="black" stop-opacity="0%" />
+            {/* <stop offset="95%" stop-color="red" /> */}
+          </radialGradient>
+        </defs>
       </svg>
     </section>
   )
