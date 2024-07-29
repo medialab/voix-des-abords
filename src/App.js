@@ -87,6 +87,10 @@ function App() {
           }
           }
         />
+        <img className="welcome-image" 
+          src={`${process.env.PUBLIC_URL}/images/accueil-dessin-des-abords-V2-web.jpg`}
+          alt="accueil"
+        />
         {
           menuData
             .slice(1)

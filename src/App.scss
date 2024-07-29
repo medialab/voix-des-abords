@@ -214,6 +214,9 @@ main .section {
   //   z-index: -1;
   //   opacity: .1;
   // }
+  @media screen and (max-width: $main-width) {
+    width: calc(100vw - 2rem);
+  }
   .home-contents {
     max-width: $main-width;
     width: $main-width;
@@ -290,6 +293,14 @@ main .section {
       }
     }
   }
+}
+
+.welcome-image{
+  max-width: $main-width;
+  @media screen and (max-width: $main-width) {
+    max-width: calc(100% - 2rem);
+  }
+
 }
 
 .section.voyageurs {
