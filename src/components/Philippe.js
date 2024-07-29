@@ -395,6 +395,7 @@ const Philippe = ({
                         height={videoHeight / 5}
                         url={currentAudioCapsule.url}
                         playing={audioIsPlaying}
+                        
                         onReady={() => {
                           console.log('audio ready');
                           setAudioIsPlaying(true);

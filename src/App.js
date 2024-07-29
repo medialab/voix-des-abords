@@ -3,6 +3,7 @@ import axios from 'axios';
 import { csvParse } from 'd3-dsv';
 import { useEffect, useState } from 'react';
 import Md from 'react-markdown';
+import rehypeRaw from "rehype-raw";
 
 import ImageGallery from "./components/ImagesGallery";
 import Home from "./components/Home";
@@ -120,7 +121,7 @@ function App() {
                     <h2>{title}</h2>
                     <div className="layout-illustrated">
                       <div className="layout-element text-element">
-                      <Md>{texts && texts[`${id}.md`]}</Md>
+                      <Md  rehypePlugins={[rehypeRaw]}>{texts && texts[`${id}.md`]}</Md>
                       </div>
                       <div className="layout-element media-element">
                        <ImageGallery images={formatedImages} />

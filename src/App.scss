@@ -654,6 +654,7 @@ main .section {
 .layout-illustrated {
   display: grid;
   grid-template-columns: auto auto;
+  grid-column-gap: 1rem;
   @media screen and (max-width: 1000px) {
     display: block;
   }
