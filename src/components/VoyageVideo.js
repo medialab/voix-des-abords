@@ -42,8 +42,8 @@ const VoyageVideo = ({
   const timecodeScale = useMemo(() => scaleLinear().domain([0, totalDuration]).range([margin, width - margin * 2]), [width])
   const segments = useMemo(() => {
     if (data) {
-      const stationsMap = data['stations.csv'].reduce((res, station) => ({...res, [station.nom]: station}), {});
-      const tweetsMap = data['tweets.csv'].reduce((res, tweet) => ({...res, [tweet.id]: tweet}), {});
+      const stationsMap = data['stations.csv'].reduce((res, station) => ({ ...res, [station.nom]: station }), {});
+      const tweetsMap = data['tweets.csv'].reduce((res, tweet) => ({ ...res, [tweet.id]: tweet }), {});
       const stops = data['timecode-arrets-etampes-bfm.csv'].map(datum => {
         const { station } = datum;
         const thatStation = stationsMap[station];
@@ -106,11 +106,11 @@ const VoyageVideo = ({
       const displayTimePadding = segmentDuration / (newCurrentSegment.tweets.length + 1);
       const positionnedSegment = {
         ...newCurrentSegment,
-        tweets: newCurrentSegment.tweets.map((tweet,index) => {
+        tweets: newCurrentSegment.tweets.map((tweet, index) => {
           const x = Math.random() * .8;
           const y = Math.random() * .8;
           const fromTime = newCurrentSegment.fromSeconds + index * displayTimePadding;
-          return {...tweet, x, y, fromTime}
+          return { ...tweet, x, y, fromTime }
         })
       }
       setCurrentSegment(positionnedSegment);
@@ -139,7 +139,7 @@ const VoyageVideo = ({
           }
         }}
       />
-      <div 
+      <div
         className="tweets-overlay-container"
         style={{
           // top: textHeight,
@@ -150,50 +150,50 @@ const VoyageVideo = ({
         }}
       >
         {
-          currentSegment ? 
-          currentSegment.tweets
-          .filter(({fromTime}) => fromTime <= currentTime)
-          .map((tweet, i) => {
-            const relX = tweet.x * width;
-            const relY = tweet.y * videoHeight;
-            const elWidth = width * .2;
-            // const elHeight = videoHeight * .2;
-            return (
-              <blockquote 
-                style={{
-                  left: relX,
-                  top: relY,
-                  // width: elWidth,
-                  maxWidth: elWidth,
-                  minWidth: elWidth,
-                  // height: elHeight,
-                  // maxHeight: elHeight,
-                  fontSize: 10 + (+tweet.retweet_count)
-                }}
-                className="tweet-content" key={i}>
-                  <p>@{tweet.user_screen_name}</p>
-                  <p>{new Date(tweet.local_time).toLocaleDateString()} - {new Date(tweet.local_time).toLocaleTimeString()}</p>
-                <p>
-                <TypeAnimation
-                  sequence={[
-                    1000, // Waits 1s
-                    tweet.text, // Deletes 'One' and types 'Two'
-                    // 2000, // Waits 2s
-                    // 'Two Three', // Types 'Three' without deleting 'Two'
-                    // () => {
-                    //   console.log('Sequence completed');
-                    // },
-                  ]}
-                  wrapper="span"
-                  cursor={true}
-                  // repeat={Infinity}
-                  // style={{ fontSize: '2em', display: 'inline-block' }}
-                />
-                </p>
-              </blockquote>
-            )
-          })
-          : null
+          currentSegment ?
+            currentSegment.tweets
+              .filter(({ fromTime }) => fromTime <= currentTime)
+              .map((tweet, i) => {
+                const relX = tweet.x * width;
+                const relY = tweet.y * videoHeight;
+                const elWidth = width * .2;
+                // const elHeight = videoHeight * .2;
+                return (
+                  <blockquote
+                    style={{
+                      left: relX,
+                      top: relY,
+                      // width: elWidth,
+                      maxWidth: elWidth,
+                      minWidth: elWidth,
+                      // height: elHeight,
+                      // maxHeight: elHeight,
+                      fontSize: 10 + (+tweet.retweet_count)
+                    }}
+                    className="tweet-content" key={i}>
+                    <p>@{tweet.user_screen_name}</p>
+                    <p>{new Date(tweet.local_time).toLocaleDateString()} - {new Date(tweet.local_time).toLocaleTimeString()}</p>
+                    <p>
+                      <TypeAnimation
+                        sequence={[
+                          1000, // Waits 1s
+                          tweet.text, // Deletes 'One' and types 'Two'
+                          // 2000, // Waits 2s
+                          // 'Two Three', // Types 'Three' without deleting 'Two'
+                          // () => {
+                          //   console.log('Sequence completed');
+                          // },
+                        ]}
+                        wrapper="span"
+                        cursor={true}
+                      // repeat={Infinity}
+                      // style={{ fontSize: '2em', display: 'inline-block' }}
+                      />
+                    </p>
+                  </blockquote>
+                )
+              })
+            : null
         }
       </div>
       <div
@@ -276,11 +276,11 @@ const VoyageVideo = ({
                   {
                     type === 'stop' ?
                       <>
-                        <g 
-                          style={{transition: '.5s ease all'}} 
+                        <g
+                          style={{ transition: '.5s ease all' }}
                           transform={`translate(${0}, ${barHeight + 10})rotate(40)`}
                         >
-                        
+
                           <text>
                             {label}
                           </text>
@@ -315,7 +315,7 @@ const VoyageVideo = ({
           <div className="ui-contents">
             <div className="ui-group">
               <div className="ui-label">
-                Présence des tweets
+                Échos des voyageur.euses
               </div>
               <div className="sliding-bar-container"
                 style={{ width: tweetsPresenceRatioBarWidth }}
@@ -339,22 +339,22 @@ const VoyageVideoContainer = (props) => {
   const [dimensions, setDimensions] = useState({})
   return (
     <>
-    <div  className="text-container">
-          <Md>{props.text}</Md>
-        </div>
-    
-    <Measure
-      bounds
-      onResize={contentRect => {
-        setDimensions(contentRect.bounds)
-      }}
-    >
-      {({ measureRef }) => (
-        <div ref={measureRef} className={'VoyageVideo-container'}>
-          <VoyageVideo {...{ ...props, ...dimensions }} />
-        </div>
-      )}
-    </Measure>
+      <div className="text-container">
+        <Md>{props.text}</Md>
+      </div>
+
+      <Measure
+        bounds
+        onResize={contentRect => {
+          setDimensions(contentRect.bounds)
+        }}
+      >
+        {({ measureRef }) => (
+          <div ref={measureRef} className={'VoyageVideo-container'}>
+            <VoyageVideo {...{ ...props, ...dimensions }} />
+          </div>
+        )}
+      </Measure>
     </>
   )
 };
