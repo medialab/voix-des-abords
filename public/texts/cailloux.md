@@ -14,8 +14,6 @@ La bourreuse
 
 Lorsque le ballast s'est tassé, le rail s'affaisse légèrement, cela peut être de 25mm par exemple, alors il faut passer la bourreuse pour redresser le rail. La bourreuse est une machine qui circule sur les rails, elle s’arrête, entre 4 et 64 bourroirs (Des pioches métalliques vibrantes, d’une taille minimum de 5cm leur nombre varie selon les machines permettant de faire plus ou moins de traverses d’un seul coup) sont plongés dans le sol de part et d’autre des deux rails, ils vibrent à une puissance et pendant un temps déterminés au préalable par les agents avec d’autres outils de mesure (généralement pas plus de 2s), les bourroirs ressortent alors, parfois il arrive de plonger plusieurs fois les bourroirs, notamment lors de l’installation du ballast (jusqu’à 3 fois), ensuite la machine avance d’environ une vingtaine de centimètres (mais c’est variable en fonction de la machine et du nombre de bourroirs) et le bourrage peut recommencer.
 
-https://www.youtube.com/watch?v=eg9eCLqXNv8
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eg9eCLqXNv8?si=3DAkBAPxUPmqH3Cv&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Poème
