@@ -395,6 +395,7 @@ const Philippe = ({
                         height={videoHeight / 5}
                         url={currentAudioCapsule.url}
                         playing={audioIsPlaying}
+                        youtubeConfig={{ iframeParams: { fullscreen: 1 } }}
                         
                         onReady={() => {
                           console.log('audio ready');
