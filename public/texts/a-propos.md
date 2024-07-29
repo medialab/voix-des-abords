@@ -1,11 +1,60 @@
+Cette enquête a été menée depuis le médialab de Sciences po, dans le cadre du stage de 4 mois que j'y ai mené
+
+L'enquête s'inscrit en continuation avec le projet que Robin de Mourat avait mené dans une friche agricole de Sevran avec Clémence Seurat et Thomas Tari, qui a notamment donné lieu au livre *Le champ des possibles* (2023). Dans cet ouvrage, la plaine de Montceleux, est présentée sous différents angles de vue qui juxtaposent alors les projections de plusieurs personnes sur cet espace. Les promoteurs immobiliers la voient comme un espace vide, qui est d’ailleurs souvent représenté en blanc sur les cartes, sur lequel bâtir d’ambitieux projets, les riverain.es n’y prêtent pas attention au quotidien, les écologues y voient une richesse de diversité
+
+Remerciements
+
+Je commence par un immense merci à Robin de Mourat pour avoir rendu ce stage possible, pour son appui, ses nombreux conseils, et pour avoir donné vie à ce super site ! Je remercie toutes les personnes qui ont répondu à mes e-mails, m'ont orienté vers d'autres interlocuteur.rices, m'ont accordé un appel, un entretien et un merci particulier à Philippe Salvi et *** pour tout le temps qu'ils m'ont accordé et pour leur bienveillance. Je remercie l'équipe tech du médialab de Science Po, et tout particulièrement Béatrice Mazoyer, Guillaume Plique et Benjamin Ooghe-Tabanou, qui m'ont aidée à travailler mon corpus. Je remercie également Timothée Giraud et Elina Marveaux qui m'ont accompagnée pendant l'Atelier de Méthode METAT, organisé par Marion Frelat, Audrey Baneyx et Diégo Antolinos-Basso à l'Université Paris Cité. Je remercie chaleureusement Axel Meunier, Donato Ricci, Benoît Verjat, Cosma Caze, Clémence Seurat, Pauline Gourlet, Thibault le Page pour les nombreuses discussions autour de ce projet.
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque consequat pellentesque varius. Duis massa lacus, pulvinar sed velit in, consequat dapibus metus. Aliquam pulvinar pretium mauris vitae consectetur. Phasellus molestie pulvinar imperdiet. Nullam aliquam ut ipsum eu facilisis. Nulla consequat, justo eget rhoncus aliquam, elit tellus pharetra mi, sit amet semper diam est ut risus. Ut viverra pharetra lacus, ut malesuada nulla volutpat eget. Ut accumsan ligula id ultricies condimentum. Integer facilisis ultrices efficitur. Maecenas laoreet quam felis, vel scelerisque massa feugiat et. Integer consequat neque at vestibulum tristique. Curabitur tincidunt eros in efficitur blandit. Aliquam finibus diam dui, et porttitor nunc viverra eu. Donec lacinia facilisis quam ut tincidunt.
+Bibliographie
 
-Curabitur felis sem, aliquet at mi sit amet, accumsan ultrices augue. Nunc gravida libero mi, eget rhoncus elit commodo nec. Phasellus in aliquam eros. Proin iaculis molestie varius. Morbi consectetur metus eu velit fringilla bibendum. Mauris gravida sodales libero, ac mollis neque volutpat ac. Duis eu sem urna. Vivamus mi dui, scelerisque vitae quam vel, euismod porta lorem. Donec eget ullamcorper nisl, ac bibendum felis. Integer sed egestas enim. Nulla rhoncus pharetra vulputate. Integer orci est, feugiat vitae tortor in, volutpat tincidunt est. Duis ac neque eros. Duis ut elit lobortis, viverra risus eu, congue arcu.
+Bourrier, Mathilde, et Nicolas Nova. 2019. « (En)quêtes de pannes. Introduction ». *Techniques & Culture* 72 (2): 12‑29. https://doi.org/10.4000/tc.12242.
 
-Duis sagittis eros vulputate, dapibus nisl ut, bibendum mauris. Phasellus eu aliquam massa. Curabitur aliquam porta sagittis. Nunc quis augue vel nunc venenatis iaculis at ut diam. Donec iaculis justo in metus cursus, a fringilla nibh congue. Mauris nisi diam, accumsan sed sapien non, dignissim aliquam eros. Suspendisse tempus, urna quis cursus tempus, odio elit varius massa, quis placerat sem velit eget diam. Curabitur dictum libero et feugiat cursus. Aliquam at justo velit. Suspendisse eget vehicula enim, a interdum magna. Nullam fringilla, dolor sit amet dignissim fringilla, augue lectus faucibus ex, sed porttitor nisl odio volutpat nibh. Donec at sollicitudin tellus. Ut mi nisi, mattis in dolor vel, placerat pharetra justo.
+Bowker, Geoffrey C., Susan Leigh Star, Henri Boullier, Vincent Cardon, Éric Dagiral, Baptiste Kotras, Ashveen Peerbaye, et al. 2023. *Arranger les choses: des conséquences de la classification*. Paris, France: Éditions de l’EHESS.
 
-Donec eget pharetra tellus, sit amet sodales magna. Proin nisi mauris, elementum in bibendum ut, vestibulum ac tellus. Nam porttitor augue quam, suscipit hendrerit velit convallis a. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent vulputate, ligula sit amet vulputate finibus, enim nisl ornare velit, quis cursus metus urna fringilla velit. In vitae ornare mauris, id elementum tortor. Cras at augue eget mauris sodales rutrum. Pellentesque accumsan vel sapien vitae rhoncus. Nulla consectetur, purus eu mattis tincidunt, tellus felis imperdiet elit, non iaculis est elit et nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras facilisis libero in tempus tempor. Donec ut purus porta ipsum hendrerit dapibus id nec tellus. Integer porta nisi eget metus vehicula, ut convallis arcu dapibus. Suspendisse placerat tortor in turpis tincidunt, sit amet sagittis ligula porttitor.
+Bravet, Pauline, Audrey Marco, et Valérie Bertaudière-Montès. 2018. « Caractérisation de la végétation des friches situées au sein d’un réseau d’infrastructures de transport : le cas de la vallée de l’Huveaune – Marseille / Characterisation of the vegetation of urban wastelands situated within transport infrastructure sites : the case of the Huveaune valley – Marseille ». *Ecologia Mediterranea* 44 (1): 67‑83. https://doi.org/10.3406/ecmed.2018.2030.
 
-Praesent aliquam fringilla neque, sed molestie diam. Donec vestibulum enim laoreet bibendum consectetur. Sed iaculis fringilla nunc eu gravida. Integer in justo pulvinar, blandit nisi eget, hendrerit ipsum. Morbi dapibus dolor et mi iaculis, eget sollicitudin ligula varius. Aenean eget risus dui. Donec malesuada, ante id blandit mattis, orci massa ornare sem, non vulputate ligula mauris at augue. Donec ultricies enim vel tellus condimentum tincidunt. Nunc tempus gravida convallis. Praesent posuere orci sodales lorem aliquet accumsan. 
+Brun, Marion, Lucy Vaseux, Denis Martouzet, et Francesca Di Pietro. 2017. « Usages et représentations des délaissés urbains, supports de services écosystémiques culturels en ville ». *Environnement Urbain / Urban Environment*, nᵒ Volume 11 (mars). https://journals.openedition.org/eue/1906.
+
+Denis, Jérôme, et David Pontille. 2022. *Le soin des choses: politiques de la maintenance*. Paris, France: Cairn.
+
+Desprès, Michel, Sébastien Lord, et Paula Negron-Poblete. 2019. « (Re)placer la mobilité dans son contexte : le parcours commenté, un outil de recueil et d’analyse de données demobilité ». *RTS. Recherche, transports, sécurité*, La mobilité en méthodes, 2019 (juin):21p. https://doi.org/10.25578/RTS_ISSN1951-6614_2019-07.
+
+Ehmig, Muriel. 2021. « Maitrise de la végétation dans un environnement ferroviaire : ensemencement choisi de voies de service comme une alternative à l’emploi du glyphosate. » These de doctorat, Toulouse, INPT. https://theses.fr/2021INPT0122.
+
+Etrillard, Claire. 2022. « Favoriser la biodiversité le long des voies ferrées ». *Droit de la voirie*, nᵒ n°228 (septembre), pp.148-152.
+
+Graitson, Eric. 2006. « Répartition et écologie des reptiles sur le réseau ferroviaire en Wallonie ». *Bulletin de la Société Herpétologique de France*, nᵒ 120, 15‑32.
+
+Haraway, Donna Jeanne, Oristelle Bonis, et Sam Préfacier Bourcier. 2009. *Des singes, des cyborgs et des femmes: la réinvention de la nature*. Nîmes, France: J. Chambon.
+
+Hennion, Antoine. 2009. « Réflexivités. L’activité de l’amateur ». *Réseaux* 153 (1): 55‑78. https://doi.org/10.3917/res.153.0055.
+
+Janin, Claude, et Lauren Andres. 2008. « Les friches : espaces en marge ou marges de manœuvre pour l’aménagement des territoires ? » *Annales de géographie* 663 (5): 62‑81. https://doi.org/10.3917/ag.663.0062.
+
+Latour, Bruno, Emilie Hermant, et Susanna Shannon. 1998. *Paris, ville invisible*. Le Plessis-Robinson, France: Institut Synthélabo.
+
+Le Lay, Marine, Caroline Dechaume-Moncharmont, Manon Vion, et Mélanie Douchet. 2019. « L’éco-pâturage pratiqué par SNCF Réseau ». *Sciences Eaux & Territoires* Numéro 27 (1): 86‑91. https://doi.org/10.3917/set.027.0086.
+
+Morizot, Baptiste. 2016. *Les diplomates: cohabiter avec les loups sur une autre carte du vivant*. Marseille, France: Éditions Wildproject.
+
+Mourat, Robin de, Clémence Seurat, et Thomas Tari. 2023. *Le champ des possibles: une enquête collective à Sevran*. Cognac (16100), France: 369 éditions.
+
+Muratet, Audrey, Myr Muratet, et Marie Pellaton. 2017. *Flore des friches urbaines du nord de la France et des régions voisines*. Paris, France: Editions Xavier Barral.
+
+Noucher, Matthieu. 2023. *Blancs des cartes et boîtes noires algorithmiques*. Paris, France: CNRS Éditions.
+
+Nova, Nicolas. 2022. *Exercices d’observation, Dans les pas des anthropologues, des écrivains, des designers et des naturalistes du quotidien*. Carnets Parallèles. Île-de-France. http://www.premierparallele.fr/livre/exercices-dobservation.
+
+Penone, Caterina. 2012. « Fonctionnement de la biodiversité en ville : contribution des dépendances vertes ferroviaires ». These de doctorat, Paris, Muséum national d’histoire naturelle. https://theses.fr/2012MNHN0010.
+
+Ricci, Donato. 2019. « Tensing the Present: An Annotated Anthology of Design Techniques to Inquire into Public Issues ». *Diseña*, nᵒ 14 (janvier), 68‑99. https://doi.org/10.7764/disena.14.68-99.
+
+Saussine Gilles. *Contribution à la modélisation de granulats tridimensionnels : application au ballast*. Mécanique [physics.med-ph]. Université Montpellier II - Sciences et Techniques du Languedoc, 2004. Français.
+
+Schick, Ernesto, et Nicola Schoenenberger. 2015. *Railway Flora: Or Nature’s Revenge on Man : Botanical Observations on the Area around the International Marshalling Yard of Chiasso*, 1969-1978. Chiasso: Florette.
+
+Serre-Collet, Françoise Auteur. 2018. *Dans la peau des lézards de France*. Versailles, France: éditions Quae.
+
+Tsing, Anna Lowenhaupt. 2017. *Le champignon de la fin du monde: sur la possibilité de vivre dans les ruines du capitalisme*. Paris, France: La Découverte.
