@@ -2,12 +2,12 @@ Cette enquête a été menée depuis le médialab de Sciences po, dans le cadre 
 
 L'enquête s'inscrit en continuation avec le projet que Robin de Mourat avait mené dans une friche agricole de Sevran avec Clémence Seurat et Thomas Tari, qui a notamment donné lieu au livre *Le champ des possibles* (2023). Dans cet ouvrage, la plaine de Montceleux, est présentée sous différents angles de vue qui juxtaposent alors les projections de plusieurs personnes sur cet espace. Les promoteurs immobiliers la voient comme un espace vide, qui est d’ailleurs souvent représenté en blanc sur les cartes, sur lequel bâtir d’ambitieux projets, les riverain.es n’y prêtent pas attention au quotidien, les écologues y voient une richesse de diversité
 
-Remerciements
+### Remerciements
 
 Je commence par un immense merci à Robin de Mourat pour avoir rendu ce stage possible, pour son appui, ses nombreux conseils, et pour avoir donné vie à ce super site ! Je remercie toutes les personnes qui ont répondu à mes e-mails, m'ont orienté vers d'autres interlocuteur.rices, m'ont accordé un appel, un entretien et un merci particulier à Philippe Salvi et *** pour tout le temps qu'ils m'ont accordé et pour leur bienveillance. Je remercie l'équipe tech du médialab de Science Po, et tout particulièrement Béatrice Mazoyer, Guillaume Plique et Benjamin Ooghe-Tabanou, qui m'ont aidée à travailler mon corpus. Je remercie également Timothée Giraud et Elina Marveaux qui m'ont accompagnée pendant l'Atelier de Méthode METAT, organisé par Marion Frelat, Audrey Baneyx et Diégo Antolinos-Basso à l'Université Paris Cité. Je remercie chaleureusement Axel Meunier, Donato Ricci, Benoît Verjat, Cosma Caze, Clémence Seurat, Pauline Gourlet, Thibault le Page pour les nombreuses discussions autour de ce projet.
 
 
-Bibliographie
+### Bibliographie
 
 Bourrier, Mathilde, et Nicolas Nova. 2019. « (En)quêtes de pannes. Introduction ». *Techniques & Culture* 72 (2): 12‑29. https://doi.org/10.4000/tc.12242.
 

@@ -20,7 +20,7 @@ accueil-point-de-vue-de-lézardweb.jpg| Photo des abords de voies au niveau de J
   'cailloux': `
 tassements-web.jpg| Comparaison des tassements et image au 100 ie cycle | Source : Saussine Gilles, Cholet Catherine, Dubois Frédéric, Bohatier Claude. 2003. "Modélisation du comportement du ballast par une méthode d'éléments discrets". Giens, pages 725 à 736.
 contacts-web.jpg| Évolution du déplacement pour différentes charges et évolution du nombre de coordinations moyen | Source : Saussine Gilles, Cholet Catherine, Dubois Frédéric, Bohatier Claude. 2003. "Modélisation du comportement du ballast par une méthode d'éléments discrets". Giens, pages 725 à 736.
-placeholder.jpg| Mon titre 3 | Ma description
+placeholder.jpg| Francis Ponge, Le galet (1927)
 `,
 }
 
@@ -31,6 +31,7 @@ export const menuData = [
   },
   {
     title: 'Les voyageurs',
+    image:"accueil-point-de-vue-de-voyageurweb.jpg",
     id: 'voyageurs'
   },
   {
@@ -43,6 +44,7 @@ export const menuData = [
   },
   {
     title: 'SNCF Réseaux',
+    image:"accueil-point-de-vue-sncf-réseauweb.jpg",
     id: 'sncf'
   },
   {
@@ -51,6 +53,7 @@ export const menuData = [
   },
   {
     title: 'Les lézards',
+    image:"accueil-point-de-vue-de-lézardweb.jpg",
     id: 'lezards'
   },
   {
@@ -84,5 +87,4 @@ export const textsList = [
   'sncf.md',
   'voyageurs.md',
   'voyageurs-notes.md',
-  'footer.md',
 ]
