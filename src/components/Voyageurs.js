@@ -1,6 +1,6 @@
 import TweetsMap from "./TweetsMap";
 import VoyageVideoContainer from "./VoyageVideo";
-
+import Md from 'react-markdown';
 
 const Voyageurs = ({
   data,
@@ -23,6 +23,17 @@ const Voyageurs = ({
             data={data}
           />
         </div>
+        <div>
+          {
+            texts ?
+            <Md>
+            {texts['voyageurs-notes.md']}
+          </Md>
+            : null
+          }
+          
+        </div>
+
       </article>
     </section>
   )

@@ -12,7 +12,7 @@ import HoveredTweets from './HoveredTweets';
 const visualizationLabels = {
   map: 'la géographie',
   networkSimple: 'les communautés twitter',
-  networkSpatialized: 'les deux',
+  networkSpatialized: 'géographie + communautés',
 }
 
 const TweetsMap = ({

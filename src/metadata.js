@@ -70,7 +70,7 @@ export const datasets = [
   'twitter_and_stations_network.json',
   'timecode_capsules_oiseaux.csv',
   'lpo_walks.json',
-  'reseau-ferre.geojson'
+  'reseau-ferre.geojson',
 ];
 
 export const textsList = [
@@ -83,4 +83,5 @@ export const textsList = [
   'short-credits.md',
   'sncf.md',
   'voyageurs.md',
+  'voyageurs-notes.md',
 ]
