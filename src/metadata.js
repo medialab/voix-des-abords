@@ -84,4 +84,5 @@ export const textsList = [
   'sncf.md',
   'voyageurs.md',
   'voyageurs-notes.md',
+  'footer.md',
 ]
