@@ -31,7 +31,7 @@ export default function ImageGallery({ images }) {
             />
             <figcaption>
               {images[0].title ? <h4>{images[0].title}</h4> : null}
-              {images[0].description ? <p>{images[0].description}</p> : null}
+              {/* {images[0].description ? <p>{images[0].description}</p> : null} */}
             </figcaption>
           </figure>
           {

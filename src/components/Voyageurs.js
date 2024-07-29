@@ -23,7 +23,7 @@ const Voyageurs = ({
             data={data}
           />
         </div>
-        <div>
+        <div className="text-container">
           {
             texts ?
             <Md>
