@@ -30,7 +30,7 @@ export const menuData = [
     id: 'home'
   },
   {
-    title: 'Les voyageurs',
+    title: 'Les voyageur.ses quotidien.nes',
     image:"accueil-point-de-vue-de-voyageurweb.jpg",
     id: 'voyageurs'
   },
