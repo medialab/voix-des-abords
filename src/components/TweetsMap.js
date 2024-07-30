@@ -115,16 +115,22 @@ const TweetsMap = ({
     }
     const tweetsExtentByStation = extent(networkData.nodes.filter(n => n.attributes.type === 'station').map(datum => +datum.attributes.nbTweets))
     const max = width * height * currentScale * 0.0000000004;
-    const tweetsDotsExtent = [max * .1, max];
     // const margin = 10;
     const xRangeExtent = [width / 4, width - width/4]
     const yRangeExtent = [height, 0];
+
+    const tweetsRadiusExtent = [max * .1, max];
+    const tweetsAreaExtent = tweetsRadiusExtent.map(radius => Math.PI * radius * radius);
+    const tweetsAreaScale = scaleLinear().domain([0, tweetsExtentByStation[1]]).range(tweetsAreaExtent);
     return {
       xClassicScale: scaleLinear().range(xRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.xAlt))),
       xMixScale: scaleLinear().range(xRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.x))),
       yClassicScale: scaleLinear().range(yRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.yAlt))),
       yMixScale: scaleLinear().range(yRangeExtent).domain(extent(networkData.nodes.map(n => +n.attributes.y))),
-      tweetsDotsScale: scaleLinear().domain([0, tweetsExtentByStation[1]]).range(tweetsDotsExtent)
+      tweetsDotsScale: val => {
+        const area = tweetsAreaScale(val);
+        return Math.sqrt(area / Math.PI)
+      }
     }
   }, [networkData, currentScale, width, height])
 
@@ -182,8 +188,80 @@ const TweetsMap = ({
     }
   }, [hoveredNode, tweetsMap, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale, scaleNetworkXPosition, scaleNetworkYPosition]);
 
+  const legendSymbolWidth = width / 40;
   return !(departements) ? 'chargement' : (
     <svg width={width} height={height} className="TweetsMap">
+      <g className="legend" transform={`translate(10, ${height / 2})`}>
+              
+              <>
+                {
+                  (
+                    vizMode === 'map' ?
+                  [
+                    [
+                      <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                      'Station de RER (taille : nombre de tweets)'
+                    ],
+                    [
+                      <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                      'Voie ferrée'
+                    ],
+                    [
+                      <line y1={0} y2={0} x1={0} x2={legendSymbolWidth} stroke="blue" />,
+                      'Voie fluviale'
+                    ],
+                    [
+                      <rect
+                        className="departement"
+                        title={'département'}
+                        fill={`url(#diagonalHatch)`}
+                        // style={{stroke: "rgba(0,0,0,0.1)"}}
+                        x={0}
+                        y={-legendSymbolWidth / 4}
+                        width={legendSymbolWidth}
+                        height={legendSymbolWidth / 2}
+                      />,
+                      'département d\'IDF'
+                    ]
+                  ] 
+                  :
+                  [
+                    [
+                      <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                      'Station de RER (taille : nombre de tweets)'
+                    ],
+                    [
+                      <g className="node twitter_user" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                      'Compte twitter (taille : nombre de tweets)'
+                    ],
+                    [
+                      <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                      'Voie ferrée'
+                    ],
+                    [
+                      <g className="edge" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                      'Interaction sur twitter (mention, réponse)'
+                    ]
+                  ]
+                )
+                  .map(([symbol, text], i) => {
+                    return (
+                      <g key={i} className="legend-group" transform={`translate(0, ${legendSymbolWidth * i})`}>
+                        <g className="symbol-container">
+                          {symbol}
+                        </g>
+                        <g className="text-container" transform={`translate(${legendSymbolWidth + 5}, ${legendSymbolWidth / 6})`}>
+                          <text x={0} y={0} fontSize={legendSymbolWidth * .4}>
+                            {text}
+                          </text>
+                        </g>
+                      </g>
+                    )
+                  })
+                }
+              </>
+      </g>
+
       <g
       // transform={`translate(${vizMode === 'map' ? 0 : width / 2 - width / 2 * networkZoomScale(currentScale)}, ${vizMode === 'map' ? 0 : height / 2 - height / 2 * networkZoomScale(currentScale)}) scale(${vizMode === 'map' ? 1 : networkZoomScale(currentScale)})`}
       // transformOrigin={'center'}
@@ -197,6 +275,7 @@ const TweetsMap = ({
                     return (
                       <Path
                         key={id}
+                        className="departement"
                         title={feature.properties.nom}
                         d={project(feature)}
                         fill={feature.properties.nom === 'Paris' ? `url(#diagonalHatchDense)` : `url(#diagonalHatch)`}
@@ -204,6 +283,14 @@ const TweetsMap = ({
                     )
                   })
                 }
+                <text
+                  x={projection([2.35, 48.8888649])[0]}
+                  y={projection([2.2877009, 48.87])[1]}
+                  fontStyle={'italic'}
+                  textAnchor="middle"
+                  fontSize={currentScale / 4000}
+                  fill="grey"
+                >Paris</text>
               </g>
               <g className={`reseau-ferre map-layer ${vizMode !== 'map' ? 'is-hidden' : ''}`}>
                 {
@@ -332,7 +419,7 @@ const TweetsMap = ({
                       <circle
                         cx={0}
                         cy={0}
-                        r={isActive && node.attributes.type === 'station' ? radius * 3 : radius}
+                        r={isActive ? radius * 1.5 : radius}
                         onMouseOver={e => {
                           setHoveredNode(node)
                         }}
@@ -508,6 +595,7 @@ const TweetsMap = ({
           </div>
         </foreignObject>
 
+      
       <pattern id={`diagonalHatch`} patternUnits="userSpaceOnUse" width="4" height="4">
         <path d="M-1,1 l2,-2
                       M0,4 l4,-4

@@ -44,7 +44,7 @@ export const menuData = [
   },
   {
     title: 'SNCF Réseaux',
-    image:"accueil-point-de-vue-sncf-réseauweb.jpg",
+    image:"accueil-point-de-vue-sncf-réseauxweb.jpg",
     id: 'sncf'
   },
   {
@@ -87,4 +87,5 @@ export const textsList = [
   'sncf.md',
   'voyageurs.md',
   'voyageurs-notes.md',
+  'footer.md',
 ]

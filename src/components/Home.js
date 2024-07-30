@@ -29,9 +29,13 @@ const Home = ({
         <div className="menu-container">
           <ul className="menu">
             {
-              menuData.slice(1).map(({ id, title }) => {
+              menuData.slice(1).map(({ id, title, image }) => {
                 return (
-                  <li key={id}>
+                  <li style={{
+                    background: image ? `url(${process.env.PUBLIC_URL}/images/${image})` : null,
+                    backgroundSize: image ? 'cover': null,
+                    fontWeight: image ? 800: null,
+                  }} key={id}>
                     <Link
                       to={id}
                       activeClass="is-active"

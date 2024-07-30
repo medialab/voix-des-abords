@@ -1,7 +1,7 @@
-CC by SA
+[médialab Sciences Po](https://medialab.sciencespo.fr/)
 
-https://creativecommons.org/licenses/by-sa/3.0/fr/
+Licence [Creative Commons Attribution-Partage dans les mêmes conditions](https://creativecommons.org/licenses/by-sa/3.0/fr/).
 
-Typographie
+Typographie : [Karla](https://fonts.google.com/specimen/Karla), Jonny Pinhorn.
 
-Carla
+Code source : [https://github.com/medialab/voix-des-abords/](https://github.com/medialab/voix-des-abords/)

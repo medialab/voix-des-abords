@@ -220,7 +220,7 @@ const Philippe = ({
   }
   const timelineHeight = videoHeight / 10;
   return (
-    <section id={id} className="section philippe">
+    <div id={id} className="philippe">
       <h2>{title}</h2>
       <Measure
         bounds
@@ -508,7 +508,7 @@ const Philippe = ({
           </radialGradient>
         </defs>
       </svg>
-    </section>
+    </div>
   )
 }
 
@@ -522,9 +522,9 @@ const PhilippeContainer = (props) => {
       }}
     >
       {({ measureRef }) => (
-        <div ref={measureRef} className={'Philippe-container'}>
+        <section ref={measureRef} className={'section Philippe-container'}>
           <Philippe {...{ ...props, ...dimensions }} />
-        </div>
+        </section>
       )}
     </Measure>
   )
