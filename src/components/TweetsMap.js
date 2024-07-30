@@ -116,7 +116,7 @@ const TweetsMap = ({
     const tweetsExtentByStation = extent(networkData.nodes.filter(n => n.attributes.type === 'station').map(datum => +datum.attributes.nbTweets))
     const max = width * height * currentScale * 0.0000000004;
     // const margin = 10;
-    const xRangeExtent = [width / 4, width - width/4]
+    const xRangeExtent = [width / 4, width - width / 4]
     const yRangeExtent = [height, 0];
 
     const tweetsRadiusExtent = [max * .1, max];
@@ -166,13 +166,13 @@ const TweetsMap = ({
         <div className="tooltip-content">
           <h5>{node.attributes.label} ({node.attributes.type === 'station' ? 'station' : 'utilisateur twitter'} - {node.attributes.nbTweets} tweet{node.attributes.nbTweets.length > 1 ? 's' : ''})</h5>
           {relatedUsers.length ? <div>{node.attributes.type === 'station' ? 'Sujet des tweets de : ' : 'Interagit avec les utilisateurs : '}{relatedUsers
-          .sort((a, b) => {
-            if (+a.attributes.nbTweets > b.attributes.nbTweets) {
-              return -1;
-            }
-            return 1;
-          })
-          .map(n => `${n.attributes.label} (${n.attributes.nbTweets} t)`).join(', ')}</div> : null}
+            .sort((a, b) => {
+              if (+a.attributes.nbTweets > b.attributes.nbTweets) {
+                return -1;
+              }
+              return 1;
+            })
+            .map(n => `${n.attributes.label} (${n.attributes.nbTweets} t)`).join(', ')}</div> : null}
           {relatedStations.length && node.attributes.type === 'twitter_user' ? <div>Tweete à propos des stations : {relatedStations.map(d => d.attributes.label).join(', ')}</div> : null}
         </div>
       )
@@ -192,74 +192,74 @@ const TweetsMap = ({
   return !(departements) ? 'chargement' : (
     <svg width={width} height={height} className="TweetsMap">
       <g className="legend" transform={`translate(10, ${height / 2})`}>
-              
-              <>
-                {
-                  (
-                    vizMode === 'map' ?
+
+        <>
+          {
+            (
+              vizMode === 'map' ?
+                [
                   [
-                    [
-                      <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
-                      'Station de RER (taille : nombre de tweets)'
-                    ],
-                    [
-                      <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
-                      'Voie ferrée'
-                    ],
-                    [
-                      <line y1={0} y2={0} x1={0} x2={legendSymbolWidth} stroke="blue" />,
-                      'Voie fluviale'
-                    ],
-                    [
-                      <rect
-                        className="departement"
-                        title={'département'}
-                        fill={`url(#diagonalHatch)`}
-                        // style={{stroke: "rgba(0,0,0,0.1)"}}
-                        x={0}
-                        y={-legendSymbolWidth / 4}
-                        width={legendSymbolWidth}
-                        height={legendSymbolWidth / 2}
-                      />,
-                      'département d\'IDF'
-                    ]
-                  ] 
-                  :
+                    <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                    'Station de RER (taille : nombre de tweets)'
+                  ],
                   [
-                    [
-                      <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
-                      'Station de RER (taille : nombre de tweets)'
-                    ],
-                    [
-                      <g className="node twitter_user" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
-                      'Compte twitter (taille : nombre de tweets)'
-                    ],
-                    [
-                      <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
-                      'Voie ferrée'
-                    ],
-                    [
-                      <g className="edge" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
-                      'Interaction sur twitter (mention, réponse)'
-                    ]
+                    <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                    'Voie ferrée'
+                  ],
+                  [
+                    <line y1={0} y2={0} x1={0} x2={legendSymbolWidth} stroke="blue" />,
+                    'Voie fluviale'
+                  ],
+                  [
+                    <rect
+                      className="departement"
+                      title={'département'}
+                      fill={`url(#diagonalHatch)`}
+                      // style={{stroke: "rgba(0,0,0,0.1)"}}
+                      x={0}
+                      y={-legendSymbolWidth / 4}
+                      width={legendSymbolWidth}
+                      height={legendSymbolWidth / 2}
+                    />,
+                    'département d\'IDF'
                   ]
+                ]
+                :
+                [
+                  [
+                    <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                    'Station de RER (taille : nombre de tweets)'
+                  ],
+                  [
+                    <g className="node twitter_user" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
+                    'Compte twitter (taille : nombre de tweets)'
+                  ],
+                  [
+                    <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                    'Voie ferrée'
+                  ],
+                  [
+                    <g className="edge" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
+                    'Interaction sur twitter (mention, réponse)'
+                  ]
+                ]
+            )
+              .map(([symbol, text], i) => {
+                return (
+                  <g key={i} className="legend-group" transform={`translate(0, ${legendSymbolWidth * i})`}>
+                    <g className="symbol-container">
+                      {symbol}
+                    </g>
+                    <g className="text-container" transform={`translate(${legendSymbolWidth + 5}, ${legendSymbolWidth / 6})`}>
+                      <text x={0} y={0} fontSize={legendSymbolWidth * .4}>
+                        {text}
+                      </text>
+                    </g>
+                  </g>
                 )
-                  .map(([symbol, text], i) => {
-                    return (
-                      <g key={i} className="legend-group" transform={`translate(0, ${legendSymbolWidth * i})`}>
-                        <g className="symbol-container">
-                          {symbol}
-                        </g>
-                        <g className="text-container" transform={`translate(${legendSymbolWidth + 5}, ${legendSymbolWidth / 6})`}>
-                          <text x={0} y={0} fontSize={legendSymbolWidth * .4}>
-                            {text}
-                          </text>
-                        </g>
-                      </g>
-                    )
-                  })
-                }
-              </>
+              })
+          }
+        </>
       </g>
 
       <g
@@ -358,7 +358,7 @@ const TweetsMap = ({
                   const isRelated = !activeAnalysis && hoveredNode && (hoveredNodeTooltipData.relatedNodesKeys.has(from.key) || hoveredNodeTooltipData.relatedNodesKeys.has(to.key));
                   const isHidden = !activeAnalysis && hoveredNode && !isRelated;
                   return (
-                    <g className={`edge ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden': ''} ${attributes.type} ${isActive ? 'is-active' : ''}`}
+                    <g className={`edge ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden' : ''} ${attributes.type} ${isActive ? 'is-active' : ''}`}
                       key={key}
                     >
                       <Line
@@ -412,7 +412,7 @@ const TweetsMap = ({
                   }
                   const radius = tweetsDotsScale(+node.attributes.nbTweets)
                   return (
-                    <Group className={`node ${node.attributes.type} ${isHovered ? 'is-hovered' : ''} ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden': ''} ${isActive ? 'is-active' : ''} ${isActiveSecondary ? 'is-active-secondary' : ''}`}
+                    <Group className={`node ${node.attributes.type} ${isHovered ? 'is-hovered' : ''} ${isRelated ? 'is-related' : ''} ${isHidden ? 'is-hidden' : ''} ${isActive ? 'is-active' : ''} ${isActiveSecondary ? 'is-active-secondary' : ''}`}
                       key={node.attributes.nom}
                       transform={`translate(${x}, ${y})`}
                     >
@@ -436,7 +436,7 @@ const TweetsMap = ({
               : null
           }
         </g>
-        
+
       </g>
       <foreignObject
         className="ui-wrapper"
@@ -570,32 +570,32 @@ const TweetsMap = ({
       </foreignObject>
 
       <foreignObject
-          className="tooltip-element-wrapper"
-          x={0}
-          y={0}
-          width={width}
-          height={height}
+        className="tooltip-element-wrapper"
+        x={0}
+        y={0}
+        width={width}
+        height={height}
+      >
+        <div xmlns="http://www.w3.org/1999/xhtml"
+          className={`tooltip-element-container ${hoveredNodeTooltipData ? 'has-contents' : ''}`}
         >
-          <div xmlns="http://www.w3.org/1999/xhtml"
-            className={`tooltip-element-container ${hoveredNodeTooltipData ? 'has-contents' : ''}`}
-          >
-            {
-              hoveredNodeTooltipData ?
-                <div
-                  className="tooltip"
-                  style={{
-                    left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 10,
-                    top: hoveredNodeTooltipData.y - 10,
-                  }}
-                >
-                  {hoveredNodeTooltipData.content}
-                </div>
-                : null
-            }
-          </div>
-        </foreignObject>
+          {
+            hoveredNodeTooltipData ?
+              <div
+                className="tooltip"
+                style={{
+                  left: hoveredNodeTooltipData.x + hoveredNodeTooltipData.radius + 10,
+                  top: hoveredNodeTooltipData.y - 10,
+                }}
+              >
+                {hoveredNodeTooltipData.content}
+              </div>
+              : null
+          }
+        </div>
+      </foreignObject>
 
-      
+
       <pattern id={`diagonalHatch`} patternUnits="userSpaceOnUse" width="4" height="4">
         <path d="M-1,1 l2,-2
                       M0,4 l4,-4
