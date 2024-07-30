@@ -676,8 +676,7 @@ main .section {
   }
 }
 
-.layout-text-only,
-.layout-illustrated {
+.layout-text-only {
   column-count: 2;
   column-gap: 1rem;
   @media screen and (max-width: $main-width) {
@@ -685,14 +684,15 @@ main .section {
   }
 }
 
-// .layout-illustrated {
-//   display: grid;
-//   grid-template-columns: auto auto;
-//   grid-column-gap: 1rem;
-//   @media screen and (max-width: $main-width) {
-//     display: block;
-//   }
-// }
+.layout-illustrated {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1rem;
+
+  @media screen and (max-width: $main-width) {
+    display: block;
+  }
+}
 .text-container {
   column-count: 2;
   column-gap: 1rem;
