@@ -177,7 +177,7 @@ const Philippe = ({
     let projection = geoMercator();
     projection.scale(700000)
     projection.center([
-      2.3553278,
+      2.351,
       48.6994407,
     ])
     projection.translate([-width / 7, height / 8]);
