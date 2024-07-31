@@ -9,14 +9,12 @@ export const images = {
 courbe-hype-renouéeweb.jpg| Courbe des hauts et des bas où je crois puis je ne crois plus que travailler sur les Renouées soit pertinent
 `,
   'sncf': `
-placeholder.jpg| Mon titre 1 | Ma description
-placeholder.jpg| Mon titre 2 | Ma description
-placeholder.jpg| Mon titre 3 | Ma description
-placeholder.jpg| Mon titre 4 | Ma description
+démo-cartes-action-web.jpg| Les cartes action, en cours de réalisation
+démo-cartes-contraintes-web.jpg| Les cartes contrainte en cours de réalisation
 `,
   'lezards': `
 point-de-vue-de-lézard-en-coursweb.jpg| Mon interprétation d'un point de vue de lézard | Dessin en cours de réalisation
-accueil-point-de-vue-de-lézardweb.jpg| Photo des abords de voies au niveau de Juvisy prise depuis un point de vue de lézard. | Ma description
+accueil-point-de-vue-de-lézardweb.jpg| Photo des abords de voies au niveau de Juvisy prise depuis un point de vue de lézard.
 lézards-web.jpg| Répartition des reptiles sur les voies du réseau ferrée de Wallonie, Eric Graitson
 `,
   'cailloux': `
