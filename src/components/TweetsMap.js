@@ -200,11 +200,11 @@ const TweetsMap = ({
                 [
                   [
                     <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
-                    'Station de RER (taille : nombre de tweets)'
+                    'Station du RER C (taille : nombre de tweets)'
                   ],
                   [
                     <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
-                    'Voie ferrée'
+                    'Voie ferrée du RER C'
                   ],
                   [
                     <line y1={0} y2={0} x1={0} x2={legendSymbolWidth} stroke="blue" />,
@@ -228,7 +228,7 @@ const TweetsMap = ({
                 [
                   [
                     <g className="node station" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
-                    'Station de RER (taille : nombre de tweets)'
+                    'Station du RER C (taille : nombre de tweets)'
                   ],
                   [
                     <g className="node twitter_user" ><circle cx={legendSymbolWidth / 2} cy={0} r={legendSymbolWidth * .4} /></g>,
@@ -236,7 +236,7 @@ const TweetsMap = ({
                   ],
                   [
                     <g className="edge segment" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
-                    'Voie ferrée'
+                    'Voie ferrée du RER C'
                   ],
                   [
                     <g className="edge" ><line y1={0} y2={0} x1={0} x2={legendSymbolWidth} /></g>,
