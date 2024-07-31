@@ -1,7 +1,7 @@
 import { Link, } from "react-scroll";
 import axios from 'axios';
 import { csvParse } from 'd3-dsv';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Md from 'react-markdown';
 import rehypeRaw from "rehype-raw";
 
@@ -9,14 +9,33 @@ import ImageGallery from "./components/ImagesGallery";
 import Home from "./components/Home";
 import Voyageurs from './components/Voyageurs';
 import './App.scss';
-import { menuData, metadata, datasets, textsList, images } from './metadata'
+import { menuData as inputMenuData, metadata, datasets, textsList, images } from './metadata'
 import Philippe from "./components/Philippe";
+
+function shuffle(arr) {
+  const array = [...arr];
+  let currentIndex = array.length;
+  while (currentIndex !== 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array;
+}
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState();
   const [texts, setTexts] = useState();
   const bottomMenuGroup = ['À propos'];
+  const menuData = useMemo(() => {
+    return [
+    inputMenuData[0],
+    ...shuffle(inputMenuData.slice(1, inputMenuData.length - 1)),
+    inputMenuData[inputMenuData.length - 1],
+  ]
+  }, []);
   useEffect(() => {
     textsList.reduce((cur, textName) => {
       return cur.then((res) => {
