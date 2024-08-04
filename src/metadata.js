@@ -9,8 +9,9 @@ export const images = {
 courbe-hype-renouéeweb.jpg| Courbe des hauts et des bas où je crois puis je ne crois plus que travailler sur les Renouées soit pertinent
 `,
   'sncf': `
-démo-cartes-action-web.jpg| Les cartes action, en cours de réalisation
-démo-cartes-contraintes-web.jpg| Les cartes contrainte en cours de réalisation
+démo-cartes-actionV2-web.jpg| Les cartes action, en cours de réalisation
+démo-cartes-contraintesV2-web.jpg| Les cartes contrainte, en cours de réalisation
+démo-cartes-incidentV2-web.jpg| Les cartes incident, en cours de réalisation
 `,
   'lezards': `
 point-de-vue-de-lézard-en-coursweb.jpg| Mon interprétation d'un point de vue de lézard | Dessin en cours de réalisation
