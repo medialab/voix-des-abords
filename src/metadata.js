@@ -9,9 +9,11 @@ export const images = {
 courbe-hype-renouéeweb.jpg| Courbe des hauts et des bas où je crois puis je ne crois plus que travailler sur les Renouées soit pertinent
 `,
   'sncf': `
-démo-cartes-actionV2-web.jpg| Les cartes action, en cours de réalisation
-démo-cartes-contraintesV2-web.jpg| Les cartes contrainte, en cours de réalisation
-démo-cartes-incidentV2-web.jpg| Les cartes incident, en cours de réalisation
+SNCF-réseau-plateau-V4web.jpg| Le plateau de jeu
+démo-cartes-actionV3-web.jpg| Les cartes action, en cours de réalisation
+démo-cartes-contraintesV3-web.jpg| Les cartes contrainte, en cours de réalisation
+démo-cartes-incidentV3-web.jpg| Les cartes incident, en cours de réalisation
+SNCF-réseau-entités-lointainesweb.jpg| Comptabilisation des points du joueur contraintes
 `,
   'lezards': `
 point-de-vue-de-lézard-en-coursweb.jpg| Mon interprétation d'un point de vue de lézard | Dessin en cours de réalisation
@@ -38,12 +40,12 @@ export const menuData = [
   },
   {
     title: 'Philippe, ornithologue LPO',
-    image:"Point-de-vue-de-Philippeweb.jpg",
+    image:"accueil-point-de-vue-de-Philippeweb.jpg",
     id: 'philippe'
   },
   {
     title: 'La renouée du Japon',
-    image:"point-de-vue-de-Renouéeweb.jpg",
+    image:"accueil-point-de-vue-de-Renouéeweb.jpg",
     id: 'renouees'
   },
   {
@@ -53,7 +55,7 @@ export const menuData = [
   },
   {
     title: 'Les cailloux',
-    image:"point-de-vue-de-caillouweb.jpg",
+    image:"accueil-point-de-vue-de-caillouweb.jpg",
     id: 'cailloux'
   },
   {
