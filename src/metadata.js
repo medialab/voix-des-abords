@@ -16,7 +16,7 @@ démo-cartes-incidentV3-web.jpg| Les cartes incident, en cours de réalisation
 SNCF-réseau-entités-lointainesweb.jpg| Comptabilisation des points du joueur contraintes
 `,
   'lezards': `
-point-de-vue-de-lézard-en-coursweb.jpg| Mon interprétation d'un point de vue de lézard | Dessin en cours de réalisation
+dessin-point-de-vue-lézardweb.jpg| Mon interprétation d'un point de vue de lézard | Dessin au crayon de couleur
 accueil-point-de-vue-de-lézardweb.jpg| Photo des abords de voies au niveau de Juvisy prise depuis un point de vue de lézard.
 lézards-web.jpg| Répartition des reptiles sur les voies du réseau ferrée de Wallonie, Eric Graitson
 `,
