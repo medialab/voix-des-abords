@@ -165,14 +165,16 @@ const TweetsMap = ({
       const content = (
         <div className="tooltip-content">
           <h5>{node.attributes.label} ({node.attributes.type === 'station' ? 'station' : 'utilisateur twitter'} - {node.attributes.nbTweets} tweet{node.attributes.nbTweets.length > 1 ? 's' : ''})</h5>
-          {relatedUsers.length ? <div>{node.attributes.type === 'station' ? 'Sujet des tweets de : ' : 'Interagit avec les utilisateurs : '}{relatedUsers
+          {
+          relatedUsers.length ? <div>{node.attributes.type === 'station' ? 'Sujet des tweets de : ' : 'Interagit avec les utilisateurs : '}{relatedUsers
             .sort((a, b) => {
               if (+a.attributes.nbTweets > b.attributes.nbTweets) {
                 return -1;
               }
               return 1;
             })
-            .map(n => `${n.attributes.label} (${n.attributes.nbTweets} t)`).join(', ')}</div> : null}
+            .map(n => `${n.attributes.label} (${n.attributes.nbTweets} t)`).join(', ')}</div> : null
+          }
           {relatedStations.length && node.attributes.type === 'twitter_user' ? <div>Tweete à propos des stations : {relatedStations.map(d => d.attributes.label).join(', ')}</div> : null}
         </div>
       )

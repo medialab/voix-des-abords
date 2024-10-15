@@ -35,7 +35,7 @@ const HoveredTweets = ({
       {
         activeTweet ?
           <>
-            <p>@{activeTweet.user_screen_name}</p>
+            <p><strong>@{activeTweet.user_screen_name}</strong></p>
             <p>{new Date(activeTweet.local_time).toLocaleDateString()} - {new Date(activeTweet.local_time).toLocaleTimeString()}</p>
             <div>{activeTweet.text}</div>
           </>
