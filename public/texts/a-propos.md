@@ -1,6 +1,6 @@
-Cette enquête a été menée depuis le médialab de Sciences po, dans le cadre du stage de 4 mois que j'y ai mené
+Cette enquête a été menée depuis le médialab de Sciences po, dans le cadre du stage de 4 mois que j'y ai mené.
 
-L'enquête s'inscrit en continuation avec le projet que Robin de Mourat avait mené dans une friche agricole de Sevran avec Clémence Seurat et Thomas Tari, qui a notamment donné lieu au livre *Le champ des possibles* (2023). Dans cet ouvrage, la plaine de Montceleux, est présentée sous différents angles de vue qui juxtaposent alors les projections de plusieurs personnes sur cet espace. Les promoteurs immobiliers la voient comme un espace vide, qui est d’ailleurs souvent représenté en blanc sur les cartes, sur lequel bâtir d’ambitieux projets, les riverain.es n’y prêtent pas attention au quotidien, les écologues y voient une richesse de diversité
+L'enquête s'inscrit en continuation avec le projet que Robin de Mourat avait mené dans une friche agricole de Sevran avec Clémence Seurat et Thomas Tari, qui a notamment donné lieu au livre *Le champ des possibles* (2023). Dans cet ouvrage, la plaine de Montceleux, est présentée sous différents angles de vue qui juxtaposent alors les projections de plusieurs personnes sur cet espace. Les promoteurs immobiliers la voient comme un espace vide, qui est d’ailleurs souvent représenté en blanc sur les cartes, sur lequel bâtir d’ambitieux projets, les riverain.es n’y prêtent pas attention au quotidien, les écologues y voient une richesse de diversité.
 
 ### Remerciements
 

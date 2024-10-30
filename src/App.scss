@@ -238,7 +238,8 @@ main .section {
     margin: 0;
     margin-top: 5rem;
     @media screen and (max-width: $main-width) {
-      margin-top: 0;
+      margin-top: 5rem;
+      // margin-left: 3rem;
     }
   }
   .home-subtitle {
@@ -247,6 +248,11 @@ main .section {
     margin-bottom: 3rem;
     font-style: italic;
     text-align: right;
+    @media screen and (max-width: $main-width) {
+      margin-top: 0;
+      // margin-left: 3rem;
+      text-align: left;
+    }
   }
   .home-main-credits {
     margin: 0;
@@ -878,4 +884,16 @@ main .section {
       cursor: pointer;
     }
   }
+}
+
+.text-element {
+  p {
+    margin: 0;
+    margin-bottom: .5rem;
+  }
+}
+
+iframe {
+  width: 100%;
+  min-height: 40vh;
 }

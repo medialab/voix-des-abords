@@ -24,6 +24,25 @@ function shuffle(arr) {
   return array;
 }
 
+function formatLineBreaks(text) {
+  const lines = text.split('\n');
+
+  return lines.map((line, index) => {
+      // Check if the line is part of a list
+      const isListItem = /^\s*[*\-+]\s+|^\s*\d+\.\s+/.test(line);
+      const isNextLineListItem = index < lines.length - 1 && /^\s*[*\-+]\s+|^\s*\d+\.\s+/.test(lines[index + 1]);
+      const isEmpty = line.trim().length === 0;
+
+      if (isListItem || isNextLineListItem || isEmpty) 
+          return line;
+      
+      if(line.trim() === '\\')
+          return line.replace('\\', '&nbsp;\n');
+
+      return line + '&nbsp;\n';
+  }).join('\n');
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState();
@@ -48,7 +67,7 @@ function App() {
             .then(({ data: str }) => {
               console.info('success')
               console.groupEnd('get ' + textName);
-              resolve({ ...res, [textName]: str });
+              resolve({ ...res, [textName]: formatLineBreaks(str) });
             })
             .catch(err => {
               console.info('error', err);

@@ -1,4 +1,4 @@
-#### Jeu du RER C
+### Jeu du RER C
 
 **Règle du jeu**
 
