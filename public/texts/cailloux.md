@@ -37,14 +37,14 @@ Et pour ça les voyageur.ses, la SNCF, l’Économie, France travail et la crois
 Comment dépasser le rapport utilitariste que nous avons avec les cailloux ? Veut-on le dépasser ?
 Peut-on parler de point de vue si le caillou n’a pas d’yeux ?
 Notre science nous-permet-elle même de croire que le caillou ressent ?
-Alors si notre science définit le cailloux comme de la matière morte,
+Alors si notre science définit le caillou comme de la matière morte,
 Pourquoi en prendrions-nous soin ?
 Pourquoi mettrions-nous des tampons de feutrines sous les pieds d’une chaise qui repose sur un sol de marbre ?
 Pourquoi emporterions-nous un caillou dans notre poche tous les jours ?
 Pourquoi essayerions-nous de nous mettre à la place d’un caillou ?
 
 On peut facilement imaginer le poids constant des traverses sur les cailloux en-dessous,
-Une pression constante qui contraint chaque cailloux entre eux
+Une pression constante qui contraint chaque caillou entre eux
 Leur solidarité les retient de s’échapper et ils font bloc sous les traverses.
 Sur la voie du RER C, en journée, ces cailloux sont soumis à de fortes pressions très régulières.
 C’est d’abord un vacarme, de légères vibrations,
@@ -62,13 +62,13 @@ Plus rares, plus long, plus lourds et plus assourdissants.
 Pendant la nuit, les cailloux de la voie du RER C n’ont qu’un léger effort venant des cailloux de cette autre voie,
 Ils ont aussi de faibles vibrations, aux passages des trains de marchandises.
 Parfois les cailloux peuvent se faire marcher dessus pendant la nuit, mais c’est très très rare,
-Cela peuvent être de grands pieds ou de toutes petites pattes.
+Ceux-ci peuvent être de grands pieds ou de toutes petites pattes.
 Au lever du jour le ballet reprend.
 Sous la pluie, l’eau ruisselle parfaitement sans s’accumuler,
 les cailloux se renvoient le doux flux les uns aux autres, le faisant parcourir le ballast du haut vers le bas.
 Les petites cascades déplacent les fines particules de terre, de métal ou de produits d’un caillou à l’autre.
 À la chaleur de l’été, ce sont les rayons du soleil qui enveloppent les cailloux de la surface du ballast
-Ces cailloux emmagasinent la chaleur, en transmettent une partie à leur camarades du dessous, qui subissent d’autant plus la pression,
+Ces cailloux emmagasinent la chaleur, en transmettent une partie à leurs camarades du dessous, qui subissent d’autant plus la pression,
 Un lézard vient chatouiller les cailloux à son passage, il se couche sur un beau et gros caillou,
 Il y reste pendant une petite partie de la journée.
 Une racine s’installe entre les cailloux, venant presque souder les cailloux entre eux, elle se développe,
@@ -93,7 +93,7 @@ Laissant aux cailloux la mémoire des vibrations en négatif.
 Après un certain très grand nombre de jours,
 Les cailloux se voient retirer la charge des traverses,
 Les contacts entre les cailloux ne sont plus contraint mais délicats,
-Ils re-découvrent leur légèreté de cailloux pour quelques jours,
+Ils redécouvrent leur légèreté de cailloux pour quelques jours,
 Ils se font ensuite balloter pour entrer dans de grosses bennes métalliques,
 C’est bruyant, c’est très sombre, ils se retrouvent avec des cailloux qu’ils ne connaissent pas,
 Ils développent très vite une nouvelle solidarité,
@@ -107,7 +107,7 @@ Les cailloux redevenus légers ne sont plus dérangés par les humains.
 Un autre lézard vient se faufiler entre les cailloux, il passe très rapidement mais revient le soir venu pour se lover dans les cailloux.
 
 Un très très grand nombre de jours a passé,
-Plusieurs Buddleias de David ont poussé parmi les cailloux, des insectes se déploient dans les infractuosité du tas de pierres, ce sont maintenant plein de légers chatouilles qui parcourent régulièrement les cailloux,
+Plusieurs Buddleias de David ont poussé parmi les cailloux, des insectes se déploient dans les enfractuosité du tas de pierres, ce sont maintenant plein de légers chatouilles qui parcourent régulièrement les cailloux,
 Il leur arrive encore parfois de se faire marcher dessus,
 Ce sont plutôt des pattes,
 Elles font légèrement bouger les cailloux qui se rencontrent encore et encore.
