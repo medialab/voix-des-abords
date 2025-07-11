@@ -32,7 +32,7 @@ déboulent et s’y fassent leur propre place,
 dérangeant quelques peu les trains qui ne peuvent les franchir, probablement à cause de leur charisme
 Les cailloux des ballasts du RER C ont surtout ceci de formidable :
 Jamais encore, ils n’ont été le motif d’un retard de train,
-Et pour ça les voyageur.ses, la SNCF, l’Économie, France travail et la croissance les en remercie.
+Et pour ça les voyageur.ses, la SNCF, l’Économie, France travail et la croissance les en remercient.
 
 Comment dépasser le rapport utilitariste que nous avons avec les cailloux ? Veut-on le dépasser ?
 Peut-on parler de point de vue si le caillou n’a pas d’yeux ?
@@ -53,7 +53,7 @@ De la chaleur émerge des rails soumis à la friction.
 La charge est assez rapide
 Elle alterne entre la pression des roues juste au-dessus de leur traverse
 Et la pression des roues à proximité de leur traverse, leur offrant de courts répits.
-Les vibrations font parfois éjecter 1 caillou hors de son bloc mais c’est très rare.
+Les vibrations font parfois éjecter un caillou hors de son bloc mais c’est très rare.
 Pour les cailloux des gares, la charge dure bien plus longtemps,
 Il y a un moment cependant où les vibrations s’arrêtent, avant de reprendre progressivement.
 Les cailloux reçoivent parfois des projections d’huiles, ou encore de très fines particules de métal
@@ -87,7 +87,7 @@ Puis les grosses vibrations commencent, chaque caillou se dandine,
 Cherchant les frictions avec ses camarades,
 Jusqu’à trouver une nouvelle position confortable pour le très grand nombre de jours qui va venir.
 Le bourroir ressort alors des cailloux, certains se replacent,
-Plus les vibrations courtes et régulières s’éloignent et diminuent,
+Puis les vibrations courtes et régulières s’éloignent et diminuent,
 Laissant aux cailloux la mémoire des vibrations en négatif.
 
 Après un certain très grand nombre de jours,

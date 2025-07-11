@@ -17,7 +17,12 @@ Bravet, Pauline, Audrey Marco, et Valérie Bertaudière-Montès. 2018. « Carac
 
 Brun, Marion, Lucy Vaseux, Denis Martouzet, et Francesca Di Pietro. 2017. « Usages et représentations des délaissés urbains, supports de services écosystémiques culturels en ville ». *Environnement Urbain / Urban Environment*, nᵒ Volume 11 (mars). https://journals.openedition.org/eue/1906.
 
+Debaise, Didier, et Stengers, Isabelle. 2021. « Résister à l’amincissement du monde ». Multitudes,85(4), 129-137. https://doi.org/10.3917/mult.085.0129.
+
 Denis, Jérôme, et David Pontille. 2022. *Le soin des choses: politiques de la maintenance*. Paris, France: Cairn.
+
+
+Desportes, Marc. 2005. Paysages en mouvement: transports et perception de l’espace : XVIIIe-XXe siècle. Paris, France : Gallimard.
 
 Desprès, Michel, Sébastien Lord, et Paula Negron-Poblete. 2019. « (Re)placer la mobilité dans son contexte : le parcours commenté, un outil de recueil et d’analyse de données demobilité ». *RTS. Recherche, transports, sécurité*, La mobilité en méthodes, 2019 (juin):21p. https://doi.org/10.25578/RTS_ISSN1951-6614_2019-07.
 
@@ -58,3 +63,5 @@ Schick, Ernesto, et Nicola Schoenenberger. 2015. *Railway Flora: Or Nature’s R
 Serre-Collet, Françoise Auteur. 2018. *Dans la peau des lézards de France*. Versailles, France: éditions Quae.
 
 Tsing, Anna Lowenhaupt. 2017. *Le champignon de la fin du monde: sur la possibilité de vivre dans les ruines du capitalisme*. Paris, France: La Découverte.
+
+Uexküll, Jakob von. 2010. Milieu animal et milieu humain. Traduit par Charles Martin-Fréville. Paris, France : Éditions Payot et Rivages.
