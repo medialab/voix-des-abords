@@ -11,6 +11,8 @@ html {
 body {
   font-family: "Karla", sans-serif;
   font-optical-sizing: auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .btn {
@@ -332,6 +334,7 @@ main .section {
 
 .section.voyageurs {
   $part-height: calc(100vh - 3rem);
+  $part-height-min: calc(70vh - 3rem);
   display: flex;
   flex-flow: column nowrap;
   justify-content: stretch;
@@ -349,6 +352,12 @@ main .section {
         max-height: $part-height;
         min-height: $part-height;
       }
+      .TweetsMap-container {
+        @media screen and (max-width: $main-width) {
+          max-height: $part-height-min;
+          min-height: $part-height-min;
+        }
+      }
     }
   }
 }
@@ -356,9 +365,9 @@ main .section {
 .TweetsMap {
   position: relative;
   .departement {
-      stroke: grey;
-      // fill: transparent;
-    }
+    stroke: grey;
+    // fill: transparent;
+  }
 
   // .rivieres {
   //   path {
@@ -490,7 +499,7 @@ main .section {
       padding: 1rem;
       p {
         margin: 0;
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
       }
       &.is-displaying {
         opacity: 1;
@@ -795,6 +804,9 @@ main .section {
 
 .section.Philippe-container {
   max-height: 110vh;
+  @media screen and (max-width: $main-width) {
+    margin-bottom: 100vh;
+  }
   // max-width: 100vw;
   box-sizing: border-box;
   // margin-bottom: 2rem;
@@ -889,11 +901,14 @@ main .section {
 .text-element {
   p {
     margin: 0;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
 iframe {
   width: 100%;
   min-height: 40vh;
+  @media screen and (max-width: $main-width) {
+    min-height: 70vh;
+  }
 }

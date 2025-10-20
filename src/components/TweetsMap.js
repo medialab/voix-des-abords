@@ -190,7 +190,7 @@ const TweetsMap = ({
     }
   }, [hoveredNode, tweetsMap, projection, tweetsDotsScale, vizMode, xClassicScale, xMixScale, yClassicScale, yMixScale, scaleNetworkXPosition, scaleNetworkYPosition]);
 
-  const legendSymbolWidth = width / 40;
+  const legendSymbolWidth = width / 40 > 15 ? width / 40 : 15;
   return !(departements) ? 'chargement' : (
     <svg width={width} height={height} className="TweetsMap">
       <g className="legend" transform={`translate(10, ${height / 2})`}>

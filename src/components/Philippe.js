@@ -102,7 +102,8 @@ const Philippe = ({
   const [baladeCoordinates, setBaladeCoordinates] = useState([0, 0]);
   const [textHeight, setTextHeight] = useState(0);
   const [activeBalade, setActiveBalade] = useState(0);
-  const vizHeight = useMemo(() => height - textHeight, [height, textHeight]);
+  const responsiveMode = useMemo(() => width < 1200, [width]);
+  const vizHeight = useMemo(() => responsiveMode ? height : height - textHeight, [responsiveMode, height, textHeight]);
   const videoWidth = useMemo(() => width * .66, [width]);
   const videoHeight = useMemo(() => videoWidth * .56, [videoWidth]);
   const linearCapsulesXScale = useMemo(() => activeBalade ? scaleLinear().domain([0, activeBalade.durationInSeconds]).range([width - videoWidth, width]) : undefined, [activeBalade, width, videoWidth]);
@@ -175,7 +176,7 @@ const Philippe = ({
   const projection = useMemo(() => { // def les bonnes valeurs pour la config de la projection // enregistrer dans le state // les appliquer dans la projection
 
     let projection = geoMercator();
-    projection.scale(700000)
+    projection.scale(responsiveMode? 350000 : 700000)
     projection.center([
       2.351,
       48.6994407,
@@ -183,7 +184,7 @@ const Philippe = ({
     projection.translate([-width / 7, height / 8]);
 
     return projection;
-  }, [width, height]);
+  }, [width, height, responsiveMode]);
 
   const project = geoPath().projection(projection) // useEffect(() => geoPath().projection(projection), [projection]);
 
