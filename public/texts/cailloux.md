@@ -44,7 +44,7 @@ Pourquoi emporterions-nous un caillou dans notre poche tous les jours ?
 Pourquoi essayerions-nous de nous mettre à la place d’un caillou ?
 
 On peut facilement imaginer le poids constant des traverses sur les cailloux en-dessous,
-Une pression constante qui contraint chaque caillou entre eux
+Une pression constante qui contraint les cailloux entre eux
 Leur solidarité les retient de s’échapper et ils font bloc sous les traverses.
 Sur la voie du RER C, en journée, ces cailloux sont soumis à de fortes pressions très régulières.
 C’est d’abord un vacarme, de légères vibrations,
@@ -59,7 +59,7 @@ Il y a un moment cependant où les vibrations s’arrêtent, avant de reprendre 
 Les cailloux reçoivent parfois des projections d’huiles, ou encore de très fines particules de métal
 À la nuit tombée, le ballet ralentit, c’est la voie d’à côté qui accueille les trains de marchandises,
 Plus rares, plus long, plus lourds et plus assourdissants.
-Pendant la nuit, les cailloux de la voie du RER C n’ont qu’un léger effort venant des cailloux de cette autre voie,
+Pendant la nuit, les cailloux de la voie du RER C n’ont qu’un léger effort provenant des cailloux de cette autre voie,
 Ils ont aussi de faibles vibrations, aux passages des trains de marchandises.
 Parfois les cailloux peuvent se faire marcher dessus pendant la nuit, mais c’est très très rare,
 Ceux-ci peuvent être de grands pieds ou de toutes petites pattes.
@@ -102,12 +102,12 @@ Ces vibrations sont très longues puis d’un coup elles s’arrêtent.
 La gravité semble changer de sens, une grosse chute les chahute encore.
 Deux cailloux voisins dans le ballast se retrouvent à nouveau, puis c’est un silence tranquille.
 
-Depuis plusieurs jours aucune vibrations ne se sont manifestées,
+Depuis plusieurs jours aucune vibration ne s'est manifestée,
 Les cailloux redevenus légers ne sont plus dérangés par les humains.
 Un autre lézard vient se faufiler entre les cailloux, il passe très rapidement mais revient le soir venu pour se lover dans les cailloux.
 
 Un très très grand nombre de jours a passé,
-Plusieurs Buddleias de David ont poussé parmi les cailloux, des insectes se déploient dans les enfractuosité du tas de pierres, ce sont maintenant plein de légers chatouilles qui parcourent régulièrement les cailloux,
+Plusieurs Buddleias de David ont poussé parmi les cailloux, des insectes se déploient dans les anfractuosités du tas de pierres, ce sont maintenant plein de légers chatouilles qui parcourent régulièrement les cailloux,
 Il leur arrive encore parfois de se faire marcher dessus,
 Ce sont plutôt des pattes,
 Elles font légèrement bouger les cailloux qui se rencontrent encore et encore.
