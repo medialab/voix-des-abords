@@ -1,6 +1,6 @@
 Les lézards apprécient des milieux anthropisés comme les voies ferrées, Eric Graitson a d'ailleurs réalisé une étude sur la présence de 6 espèces de reptiles sur le réseau ferroviaire en Wallonie (Graitson, 2006).
 
-La Renouée du Japon et la Griffe de sorcière, des espèces qualifiées d’invasive, sont considérées comme entrant en concurrence avec les lézards puisqu'elles peuvent pousser dans de nombreux milieux et remplir alors les entrées des fissures que les lézards affectionnent.
+La Renouée du Japon et la Griffe de sorcière, des espèces qualifiées d’invasives, sont considérées comme entrant en concurrence avec les lézards puisqu'elles peuvent pousser dans de nombreux milieux et remplir alors les entrées des fissures que les lézards affectionnent.
 
 Le lézard sort peu pendant la nuit, il ne peut pas produire sa propre chaleur et dépend alors de la chaleur ambiante (ectotherme) pour se chauffer, assouplir sa peau et partir en chasse. Le lézard va alors s’exposer au soleil pour capter ses rayons directement (héliothermie) ou alors se réchauffer par conduction, sous une planche par exemple (thigmothermie), la température optimale des lézards à deux raies est de 32° et la température minimale d'activité est de 15°c.
 
