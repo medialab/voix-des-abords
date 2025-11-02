@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/voix-des-abords/static/css/main.47d321b5.css",
+    "main.js": "/voix-des-abords/static/js/main.d1b18751.js",
+    "reactPlayerYouTube.js": "/voix-des-abords/static/js/reactPlayerYouTube.e167e9db.chunk.js",
+    "reactPlayerSoundCloud.js": "/voix-des-abords/static/js/reactPlayerSoundCloud.3e38071b.chunk.js",
+    "reactPlayerVimeo.js": "/voix-des-abords/static/js/reactPlayerVimeo.b02fab23.chunk.js",
+    "reactPlayerMux.js": "/voix-des-abords/static/js/reactPlayerMux.35fcc491.chunk.js",
+    "reactPlayerFacebook.js": "/voix-des-abords/static/js/reactPlayerFacebook.7f99dc47.chunk.js",
+    "reactPlayerStreamable.js": "/voix-des-abords/static/js/reactPlayerStreamable.b78df2aa.chunk.js",
+    "reactPlayerWistia.js": "/voix-des-abords/static/js/reactPlayerWistia.fc2232cc.chunk.js",
+    "reactPlayerTwitch.js": "/voix-des-abords/static/js/reactPlayerTwitch.40b99f07.chunk.js",
+    "reactPlayerDailyMotion.js": "/voix-des-abords/static/js/reactPlayerDailyMotion.66faeffd.chunk.js",
+    "reactPlayerMixcloud.js": "/voix-des-abords/static/js/reactPlayerMixcloud.ec5108cd.chunk.js",
+    "reactPlayerVidyard.js": "/voix-des-abords/static/js/reactPlayerVidyard.2773b2c4.chunk.js",
+    "reactPlayerKaltura.js": "/voix-des-abords/static/js/reactPlayerKaltura.fa6a9cd5.chunk.js",
+    "reactPlayerFilePlayer.js": "/voix-des-abords/static/js/reactPlayerFilePlayer.557ae159.chunk.js",
+    "reactPlayerPreview.js": "/voix-des-abords/static/js/reactPlayerPreview.d3858616.chunk.js",
+    "static/js/453.735b430c.chunk.js": "/voix-des-abords/static/js/453.735b430c.chunk.js",
+    "index.html": "/voix-des-abords/index.html",
+    "main.47d321b5.css.map": "/voix-des-abords/static/css/main.47d321b5.css.map",
+    "main.d1b18751.js.map": "/voix-des-abords/static/js/main.d1b18751.js.map",
+    "reactPlayerYouTube.e167e9db.chunk.js.map": "/voix-des-abords/static/js/reactPlayerYouTube.e167e9db.chunk.js.map",
+    "reactPlayerSoundCloud.3e38071b.chunk.js.map": "/voix-des-abords/static/js/reactPlayerSoundCloud.3e38071b.chunk.js.map",
+    "reactPlayerVimeo.b02fab23.chunk.js.map": "/voix-des-abords/static/js/reactPlayerVimeo.b02fab23.chunk.js.map",
+    "reactPlayerMux.35fcc491.chunk.js.map": "/voix-des-abords/static/js/reactPlayerMux.35fcc491.chunk.js.map",
+    "reactPlayerFacebook.7f99dc47.chunk.js.map": "/voix-des-abords/static/js/reactPlayerFacebook.7f99dc47.chunk.js.map",
+    "reactPlayerStreamable.b78df2aa.chunk.js.map": "/voix-des-abords/static/js/reactPlayerStreamable.b78df2aa.chunk.js.map",
+    "reactPlayerWistia.fc2232cc.chunk.js.map": "/voix-des-abords/static/js/reactPlayerWistia.fc2232cc.chunk.js.map",
+    "reactPlayerTwitch.40b99f07.chunk.js.map": "/voix-des-abords/static/js/reactPlayerTwitch.40b99f07.chunk.js.map",
+    "reactPlayerDailyMotion.66faeffd.chunk.js.map": "/voix-des-abords/static/js/reactPlayerDailyMotion.66faeffd.chunk.js.map",
+    "reactPlayerMixcloud.ec5108cd.chunk.js.map": "/voix-des-abords/static/js/reactPlayerMixcloud.ec5108cd.chunk.js.map",
+    "reactPlayerVidyard.2773b2c4.chunk.js.map": "/voix-des-abords/static/js/reactPlayerVidyard.2773b2c4.chunk.js.map",
+    "reactPlayerKaltura.fa6a9cd5.chunk.js.map": "/voix-des-abords/static/js/reactPlayerKaltura.fa6a9cd5.chunk.js.map",
+    "reactPlayerFilePlayer.557ae159.chunk.js.map": "/voix-des-abords/static/js/reactPlayerFilePlayer.557ae159.chunk.js.map",
+    "reactPlayerPreview.d3858616.chunk.js.map": "/voix-des-abords/static/js/reactPlayerPreview.d3858616.chunk.js.map",
+    "453.735b430c.chunk.js.map": "/voix-des-abords/static/js/453.735b430c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47d321b5.css",
+    "static/js/main.d1b18751.js"
+  ]
+}
